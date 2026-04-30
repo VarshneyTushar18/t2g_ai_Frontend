@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TRUST_ITEMS = [
   "500+ Global Clients",
@@ -14,6 +15,8 @@ function scrollTo(id: string) {
 }
 
 export default function Hero() {
+  const navigate = useNavigate();
+
   const blobRef1 = useRef<HTMLDivElement | null>(null);
   const blobRef2 = useRef<HTMLDivElement | null>(null);
 
@@ -181,17 +184,34 @@ export default function Hero() {
         >
           <button
             type="button"
-            onClick={() => scrollTo("contact")}
-            className="glow-btn-purple font-orbitron text-xs sm:text-sm font-bold tracking-wider text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
-            data-ocid="hero-cta-primary"
+            onClick={() => navigate("/ai-expert")}
+            className="relative overflow-hidden font-orbitron text-xs sm:text-sm font-bold tracking-wider 
+  px-6 sm:px-8 py-3 sm:py-4 rounded-xl w-full sm:w-auto 
+  border border-cyan-400/40 
+  bg-gradient-to-r from-[#001f1a] to-[#003d33] 
+  text-cyan-300 
+  transition-all duration-300 ease-out
+  hover:text-white hover:border-cyan-300
+  hover:shadow-[0_0_20px_rgba(0,196,154,0.6)]
+  hover:-translate-y-1
+  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00c49a]"
           >
             Hire an AI Engineer Now
           </button>
+
           <button
             type="button"
             onClick={() => scrollTo("process")}
-            className="glow-btn-cyan font-orbitron text-xs sm:text-sm font-bold tracking-wider px-6 sm:px-8 py-3 sm:py-4 rounded-xl w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00c49a]"
-            data-ocid="hero-cta-secondary"
+            className="relative overflow-hidden font-orbitron text-xs sm:text-sm font-bold tracking-wider 
+  px-6 sm:px-8 py-3 sm:py-4 rounded-xl w-full sm:w-auto 
+  border border-cyan-400/30 
+  bg-transparent 
+  text-cyan-400 
+  transition-all duration-300 ease-out
+  hover:bg-[#00c49a]/10 hover:text-black hover:border-cyan-300
+  hover:shadow-[0_0_15px_rgba(0,196,154,0.5)]
+  hover:-translate-y-1
+  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00c49a]"
           >
             See How It Works
           </button>

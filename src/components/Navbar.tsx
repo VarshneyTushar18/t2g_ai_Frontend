@@ -14,14 +14,40 @@ const NAV_LINKS: NavItem[] = [
     label: "Hire AI Engineer",
     type: "dropdown",
     children: [
-      { label: "Hire AI Lovable Developer", type: "scroll", href: "hire-ai-lovable-developer" },
-      { label: "Hire AI Emergent Developer", type: "scroll", href: "hire-ai-emergent-developer" },
-      { label: "Hire OpenAI Developer", type: "scroll", href: "hire-openai-developer" },
-      { label: "Hire Caffeine Developer", type: "route", href: "/hire-caffeine-developer" },
-      { label: "Hire Genw.AI Developer", type: "scroll", href: "hire-genwai-developer" },
+      {
+        label: "Hire AI Lovable Developer",
+        type: "route",
+        href: "/hire-lovable",
+      },
+      {
+        label: "Hire AI Emergent Developer",
+        type: "route",
+        href: "/hire-emergent-ai",
+      },
+      // {
+      //   label: "Hire OpenAI Developer",
+      //   type: "route",
+      //   href: "/hire-openai-developer",
+      // },
+      {
+        label: "Hire OpenAI Developer",
+        type: "route",
+        href: "/hire-openai",
+      },
+
+      {
+        label: "Hire Caffeine Developer",
+        type: "route",
+        href: "/hire-caffeine-developer",
+      },
+      {
+        label: "Hire Genw.AI Developer",
+        type: "route",
+        href: "/hire-genwai-developer",
+      },
     ],
   },
-  { label: "Hire AI Developers", type: "route", href: "/hire-ai-developers" },
+  { label: "Hire AI Developers", type: "route", href: "/hire-ai-lovable-developer" },
   { label: "Industries", type: "route", href: "/industries" },
   { label: "Portfolio", type: "route", href: "/portfolio" },
   { label: "About Us", type: "route", href: "/about" },
@@ -85,12 +111,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-
-          {/* Logo */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center"
-          >
+          <button onClick={() => navigate("/")} className="flex items-center">
             <img
               src="/assets/images/tech2globe-logo.png"
               alt="logo"
@@ -102,10 +123,8 @@ export default function Navbar() {
           <ul className="hidden md:flex gap-6 items-center">
             {NAV_LINKS.map((item) => (
               <li key={item.label} className="relative">
-
                 {item.type === "dropdown" ? (
                   <div className="relative group">
-
                     <button className="flex items-center gap-1 text-sm font-semibold text-gray-600 hover:text-green-600 transition">
                       {item.label}
                       <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
@@ -137,7 +156,6 @@ export default function Navbar() {
                     {item.label}
                   </button>
                 )}
-
               </li>
             ))}
           </ul>
@@ -145,7 +163,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex">
             <button
-              onClick={() => navigate("/ai-expert")}
+              onClick={() => navigate("/hire-us")}
               className="bg-purple-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-purple-700 transition"
             >
               Hire Us
@@ -171,7 +189,6 @@ export default function Navbar() {
         }}
       >
         <div className="px-4 py-3 flex flex-col gap-4">
-
           {NAV_LINKS.map((item) => (
             <div key={item.label}>
               {item.type === "dropdown" ? (
@@ -212,7 +229,6 @@ export default function Navbar() {
           >
             Hire Us
           </button>
-
         </div>
       </div>
     </nav>

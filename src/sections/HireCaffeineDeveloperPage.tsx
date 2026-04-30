@@ -2,6 +2,19 @@ import Navbar from "@/components/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { submitContactForm } from "@/api/contactApi";
+import { toast } from "sonner";
+
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   BrainCircuit,
   Building2,
@@ -19,6 +32,7 @@ import {
   Monitor,
   Package,
   Rocket,
+  Send,
   Server,
   ShieldCheck,
   Sparkles,
@@ -487,34 +501,89 @@ function FAQItem({ faq }: { faq: (typeof FAQS)[0]; idx: number }) {
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState<ContactFormState>({
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({
     name: "",
     email: "",
-    company: "",
     phone: "",
-    projectType: "",
+    company: "",
+    service: "",
+    aiProduct: "",
     message: "",
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formError, setFormError] = useState("");
 
-  const handleFormChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const EMPTY_FORM = {
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "",
+    aiProduct: "",
+    message: "",
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const [errors, setErrors] = useState<any>({});
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleChange = (field: string, value: string) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const validate = (form: any) => {
+    const errors: any = {};
+
+    if (!form.name) errors.name = "Name is required";
+    if (!form.email) errors.email = "Email is required";
+    if (!form.service) errors.service = "Service is required";
+    if (!form.message) errors.message = "Message is required";
+
+    return errors;
+  };
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setFormError("Please fill in all required fields.");
+
+    const fieldErrors = validate(form);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
       return;
     }
-    setFormError("");
-    setFormSubmitted(true);
-  };
+
+    setSubmitting(true);
+
+    try {
+      await submitContactForm(form);
+
+      toast.success("Message sent successfully");
+
+      setForm(EMPTY_FORM);
+      setErrors({});
+      setFormSubmitted(true); // ✅ FIXED
+    } catch (error: any) {
+      console.error(error);
+      toast.error(error?.message || "Something went wrong");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  const inputClass =
+    "px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white transition-all w-full";
+
+  const selectClass =
+    "px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white transition-all w-full appearance-none";
+
+  const SERVICE_OPTIONS = ["AI Development", "Automation", "Consulting"];
+
+  const AI_PRODUCT_OPTIONS = [
+    "Chatbot",
+    "Recommendation Engine",
+    "Computer Vision",
+  ];
 
   return (
     <>
@@ -585,21 +654,38 @@ export default function LandingPage() {
               <div className="flex flex-wrap gap-4 mb-12">
                 <Button
                   size="lg"
-                  className="gradient-indigo text-white border-0 hover:opacity-90 transition-smooth font-display font-semibold px-8 text-base rounded-full"
-                  onClick={() => navigate({ to: "/contact" })}
-                  data-ocid="hero.cta_primary.button"
+                  onClick={() => navigate("/ai-expert")}
+                  className="relative overflow-hidden font-orbitron font-bold tracking-wider 
+  px-6 sm:px-8 py-3 sm:py-4 rounded-xl
+  border border-indigo-400/40 
+  bg-gradient-to-r from-[#1a1f3a] to-[#2d1b69] 
+  text-indigo-300
+  transition-all duration-300 ease-out
+  hover:text-white hover:border-indigo-300
+  hover:shadow-[0_0_25px_rgba(99,102,241,0.6)]
+  hover:-translate-y-1
+  data-ocid='hero.cta_primary.button'"
                 >
                   Get a Free Consultation
                 </Button>
+
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 transition-smooth font-display font-semibold px-8 text-base rounded-full bg-transparent"
                   onClick={() => {
                     const el = document.getElementById("portfolio");
                     if (el) el.scrollIntoView({ behavior: "smooth" });
                   }}
-                  data-ocid="hero.cta_secondary.button"
+                  className="relative overflow-hidden font-orbitron font-bold tracking-wider 
+  px-6 sm:px-8 py-3 sm:py-4 rounded-xl
+  border border-indigo-400/30 
+  bg-transparent
+  text-indigo-400
+  transition-all duration-300 ease-out
+  hover:bg-indigo-500/10 hover:text-black hover:border-indigo-300
+  hover:shadow-[0_0_20px_rgba(99,102,241,0.5)]
+  hover:-translate-y-1
+  data-ocid='hero.cta_secondary.button'"
                 >
                   View Our Work
                 </Button>
@@ -1362,7 +1448,7 @@ export default function LandingPage() {
               <Button
                 size="lg"
                 className="gradient-indigo text-white border-0 hover:opacity-90 transition-smooth font-display font-semibold px-9 text-base rounded-full"
-                onClick={() => navigate({ to: "/contact" })}
+                onClick={() => navigate("/ai-expert")}
                 data-ocid="build_smarter.start_project.button"
               >
                 Get a Free Consultation
@@ -1371,7 +1457,7 @@ export default function LandingPage() {
                 size="lg"
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 transition-smooth font-display font-semibold px-9 text-base rounded-full bg-transparent"
-                onClick={() => navigate({ to: "/contact" })}
+                onClick={() => navigate("/ai-expert")}
                 data-ocid="build_smarter.talk_expert.button"
               >
                 Let's Talk with an AI Expert
@@ -1382,295 +1468,10 @@ export default function LandingPage() {
       </section>
 
       {/* ── Get In Touch Lead Form ────────────────────────────────── */}
-      <section
-        id="get-in-touch"
-        className="py-16"
-        style={{ backgroundColor: "#f8f9fa" }}
-        data-ocid="contact_form.section"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-indigo-600 text-xs font-display font-semibold uppercase tracking-widest mb-2">
-              CONTACT US
-            </p>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-gray-900 mb-3">
-              Get In Touch
-            </h2>
-            <p className="text-gray-600 text-base max-w-xl mx-auto">
-              Tell us about your project and we'll get back to you within 1
-              Business Day.
-            </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
-            {/* Left — Contact info */}
-            <motion.div
-              className="lg:col-span-2 flex flex-col gap-6"
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              data-ocid="contact_form.info.panel"
-            >
-              <div className="bg-white border border-border rounded-xl p-6 shadow-card">
-                <h3 className="font-display font-bold text-lg text-gray-900 mb-5">
-                  Contact Information
-                </h3>
-                <div className="flex flex-col gap-5">
-                  {[
-                    { label: "Email", value: "info@tech2globe.com", icon: "✉" },
-                    { label: "Phone", value: "+1-516-858-5840", icon: "📞" },
-                    {
-                      label: "Address",
-                      value:
-                        "1538, Old Country Road, Planview, New York, United States-11803",
-                      icon: "📍",
-                    },
-                  ].map((info) => (
-                    <div key={info.label} className="flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center text-sm shrink-0">
-                        {info.icon}
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500 font-medium mb-0.5">
-                          {info.label}
-                        </p>
-                        <p className="text-sm text-gray-800 font-semibold">
-                          {info.value}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-xl p-6 text-white">
-                <h4 className="font-display font-bold text-base mb-2">
-                  Why work with us?
-                </h4>
-                <ul className="flex flex-col gap-2">
-                  {[
-                    "Free initial consultation",
-                    "No commitment required",
-                    "Senior engineers only",
-                  ].map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-center gap-2 text-sm text-white/90"
-                    >
-                      <Check className="w-4 h-4 text-indigo-200 shrink-0" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Right — Form */}
-            <motion.div
-              className="lg:col-span-3"
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              data-ocid="contact_form.form.panel"
-            >
-              <div className="bg-white border border-border rounded-xl p-6 sm:p-8 shadow-card">
-                {formSubmitted ? (
-                  <div
-                    className="flex flex-col items-center justify-center py-12 gap-4 text-center"
-                    data-ocid="contact_form.success_state"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center">
-                      <Check className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h3 className="font-display font-bold text-xl text-gray-900">
-                      Message Sent!
-                    </h3>
-                    <p className="text-gray-600 text-sm max-w-sm">
-                      Thank you for reaching out. Our team will get back to you
-                      within 1 Business Day.
-                    </p>
-                    <Button
-                      variant="outline"
-                      className="mt-2 border-indigo-200 text-indigo-600 hover:bg-indigo-50"
-                      onClick={() => {
-                        setFormSubmitted(false);
-                        setFormData({
-                          name: "",
-                          email: "",
-                          company: "",
-                          phone: "",
-                          projectType: "",
-                          message: "",
-                        });
-                      }}
-                      data-ocid="contact_form.reset.button"
-                    >
-                      Send Another Message
-                    </Button>
-                  </div>
-                ) : (
-                  <form
-                    onSubmit={handleFormSubmit}
-                    className="flex flex-col gap-5"
-                    data-ocid="contact_form.form"
-                  >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-1.5">
-                        <label
-                          htmlFor="cf-name"
-                          className="text-xs font-semibold text-gray-700"
-                        >
-                          Full Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          id="cf-name"
-                          name="name"
-                          type="text"
-                          required
-                          placeholder="John Smith"
-                          value={formData.name}
-                          onChange={handleFormChange}
-                          className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white transition-all"
-                          data-ocid="contact_form.name.input"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label
-                          htmlFor="cf-email"
-                          className="text-xs font-semibold text-gray-700"
-                        >
-                          Email Address <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          id="cf-email"
-                          name="email"
-                          type="email"
-                          required
-                          placeholder="john@company.com"
-                          value={formData.email}
-                          onChange={handleFormChange}
-                          className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white transition-all"
-                          data-ocid="contact_form.email.input"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div className="flex flex-col gap-1.5">
-                        <label
-                          htmlFor="cf-company"
-                          className="text-xs font-semibold text-gray-700"
-                        >
-                          Company Name
-                        </label>
-                        <input
-                          id="cf-company"
-                          name="company"
-                          type="text"
-                          placeholder="Your Company"
-                          value={formData.company}
-                          onChange={handleFormChange}
-                          className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white transition-all"
-                          data-ocid="contact_form.company.input"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label
-                          htmlFor="cf-phone"
-                          className="text-xs font-semibold text-gray-700"
-                        >
-                          Phone Number
-                        </label>
-                        <input
-                          id="cf-phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+1 (555) 000-0000"
-                          value={formData.phone}
-                          onChange={handleFormChange}
-                          className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white transition-all"
-                          data-ocid="contact_form.phone.input"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label
-                        htmlFor="cf-project-type"
-                        className="text-xs font-semibold text-gray-700"
-                      >
-                        Project Type
-                      </label>
-                      <select
-                        id="cf-project-type"
-                        name="projectType"
-                        value={formData.projectType}
-                        onChange={handleFormChange}
-                        className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white transition-all"
-                        data-ocid="contact_form.project_type.select"
-                      >
-                        <option value="">Select project type...</option>
-                        {PROJECT_TYPES.map((type) => (
-                          <option key={type} value={type}>
-                            {type}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label
-                        htmlFor="cf-message"
-                        className="text-xs font-semibold text-gray-700"
-                      >
-                        Message / Project Description{" "}
-                        <span className="text-red-500">*</span>
-                      </label>
-                      <textarea
-                        id="cf-message"
-                        name="message"
-                        required
-                        rows={4}
-                        placeholder="Tell us about your project, goals, and timeline..."
-                        value={formData.message}
-                        onChange={handleFormChange}
-                        className="px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white transition-all resize-none"
-                        data-ocid="contact_form.message.textarea"
-                      />
-                    </div>
-
-                    {formError && (
-                      <p
-                        className="text-red-600 text-xs"
-                        data-ocid="contact_form.error_state"
-                      >
-                        {formError}
-                      </p>
-                    )}
-
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full gradient-indigo text-white border-0 hover:opacity-90 transition-smooth font-display font-semibold text-base rounded-lg"
-                      data-ocid="contact_form.submit_button"
-                    >
-                      Send Message
-                    </Button>
-                  </form>
-                )}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
+
+
+

@@ -102,12 +102,7 @@ export default function HowItWorks() {
           ref={headingRef}
           className={`text-center mb-8 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
         >
-          <span
-            className="section-label mb-5 inline-block"
-            data-ocid="process-label"
-          >
-            HOW IT WORKS
-          </span>
+      
           <h2
             id="process-heading"
             className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mt-4 leading-tight"

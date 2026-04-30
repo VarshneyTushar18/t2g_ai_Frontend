@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { submitContactForm } from "@/api/contactApi";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import {
   Award,
   BarChart2,
@@ -33,6 +35,7 @@ import {
   Rocket,
   Scale,
   Search,
+  Send,
   Shield,
   ShoppingCart,
   Star,
@@ -42,6 +45,16 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
@@ -452,42 +465,110 @@ function FAQItem({ faq }: { faq: (typeof FAQS)[0] }) {
 // ─── Page ──────────────────────────────────────────────────────────────────────
 
 interface ContactState {
-  name: string;
+  fullName: string;
   email: string;
-  phone: string;
   company: string;
-  industry: string;
-  message: string;
+  country: string;
+  platform: string;
+  budget: string;
+  timeline: string;
+  description: string;
 }
 
 export default function IndustriesPage() {
   const navigate = useNavigate();
-  const [form, setForm] = useState<ContactState>({
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
-    industry: "",
+    service: "",
+    aiProduct: "",
     message: "",
   });
+
+
+  const EMPTY_FORM = {
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "",
+    aiProduct: "",
+    message: "",
+  };
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState<any>({});
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const inputClass =
+    "w-full rounded-lg border border-gray-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const selectClass =
+    "w-full rounded-lg border border-gray-200 px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500";
+
+  const handleChange = (field: string, value: string) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const validate = (form: any) => {
+    const errors: any = {};
+
+    if (!form.name) errors.name = "Name is required";
+    if (!form.email) errors.email = "Email is required";
+    if (!form.service) errors.service = "Service is required";
+    if (!form.message) errors.message = "Message is required";
+
+    return errors;
+  };
+
+
+  const SERVICE_OPTIONS = [
+    "Custom AI Development",
+    "AI Consulting",
+    "Automation",
+    "Data Analytics",
+    "Machine Learning",
+  ];
+
+  const AI_PRODUCT_OPTIONS = [
+    "Chatbot",
+    "Recommendation Engine",
+    "Computer Vision",
+    "NLP System",
+    "Predictive Analytics",
+  ];
+
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setError("Please fill in all required fields.");
+
+    const fieldErrors = validate(form);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
       return;
     }
-    setError("");
-    setSubmitted(true);
-  };
+
+    setSubmitting(true);
+
+    try {
+      await submitContactForm(form);
+
+      toast.success("Message sent successfully");
+
+      setForm(EMPTY_FORM);
+      setErrors({});
+      setSubmitted(true); // ✅ ensure UI uses this
+    } catch (error: any) {
+      console.error(error);
+      toast.error(error?.message || "Something went wrong");
+    } finally {
+      setSubmitting(false); // ✅ VERY IMPORTANT
+    }
+  }
 
   return (
     <>
@@ -1167,281 +1248,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* ── 12. CONTACT / GET IN TOUCH ──────────────────────────────── */}
-      <section
-        id="contact"
-        className="bg-white py-16"
-        data-ocid="contact.section"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-gray-900 mb-3">
-              Get In Touch
-            </h2>
-            <p className="text-gray-600 text-base max-w-xl mx-auto">
-              Ready to discuss your industry AI project? Fill out the form and
-              our team will respond within 24 hours.
-            </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-            {/* Left: contact info */}
-            <motion.div
-              className="lg:col-span-2 flex flex-col gap-4"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              data-ocid="contact.info.panel"
-            >
-              {/* Email card */}
-              <div className="bg-white border border-gray-100 rounded-xl p-5 flex items-start gap-4 shadow-card hover-lift">
-                <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="font-display font-semibold text-sm text-gray-900 mb-0.5">
-                    Email
-                  </p>
-                  <p className="text-gray-600 text-sm">info@tech2globe.com</p>
-                </div>
-              </div>
-              {/* Phone card */}
-              <div className="bg-white border border-gray-100 rounded-xl p-5 flex items-start gap-4 shadow-card hover-lift">
-                <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="font-display font-semibold text-sm text-gray-900 mb-0.5">
-                    Phone
-                  </p>
-                  <p className="text-gray-600 text-sm">+1-516-858-5840</p>
-                </div>
-              </div>
-              {/* Address card */}
-              <div className="bg-white border border-gray-100 rounded-xl p-5 flex items-start gap-4 shadow-card hover-lift">
-                <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="font-display font-semibold text-sm text-gray-900 mb-0.5">
-                    Address
-                  </p>
-                  <p className="text-gray-600 text-sm">
-                    1538 Old Country Road, Planview, NY
-                  </p>
-                </div>
-              </div>
-              {/* Response time */}
-              <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-5 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center shrink-0">
-                  <Clock className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div>
-                  <p className="font-display font-semibold text-sm text-indigo-900 mb-0.5">
-                    Response Time
-                  </p>
-                  <p className="text-indigo-700 text-sm">
-                    We typically respond within 4 business hours
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right: form */}
-            <motion.div
-              className="lg:col-span-3 bg-white border border-gray-100 rounded-xl p-8 shadow-card"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              data-ocid="contact.form.card"
-            >
-              {submitted ? (
-                <div
-                  className="flex flex-col items-center justify-center py-12 gap-4 text-center"
-                  data-ocid="contact.success_state"
-                >
-                  <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
-                    <CheckCircle className="w-7 h-7 text-green-600" />
-                  </div>
-                  <h3 className="font-display font-bold text-xl text-gray-900">
-                    Message Sent!
-                  </h3>
-                  <p className="text-gray-600 text-sm max-w-sm">
-                    Thank you for reaching out. Our team will respond within 4
-                    business hours.
-                  </p>
-                  <Button
-                    size="sm"
-                    className="gradient-indigo text-white border-0 rounded-full px-6 mt-2"
-                    onClick={() => setSubmitted(false)}
-                    data-ocid="contact.send_another.button"
-                  >
-                    Send Another Message
-                  </Button>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="flex flex-col gap-4"
-                  data-ocid="contact.form"
-                >
-                  <h3 className="font-display font-bold text-xl text-gray-900 mb-1">
-                    Tell Us About Your Project
-                  </h3>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1.5">
-                      <label
-                        htmlFor="c-name"
-                        className="text-xs font-display font-semibold text-gray-700 uppercase tracking-wide"
-                      >
-                        Full Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        id="c-name"
-                        type="text"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="John Smith"
-                        className="border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 transition-colors bg-white placeholder-gray-400"
-                        data-ocid="contact.name.input"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label
-                        htmlFor="c-email"
-                        className="text-xs font-display font-semibold text-gray-700 uppercase tracking-wide"
-                      >
-                        Email Address <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        id="c-email"
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="john@company.com"
-                        className="border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 transition-colors bg-white placeholder-gray-400"
-                        data-ocid="contact.email.input"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label
-                        htmlFor="c-phone"
-                        className="text-xs font-display font-semibold text-gray-700 uppercase tracking-wide"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        id="c-phone"
-                        type="tel"
-                        name="phone"
-                        value={form.phone}
-                        onChange={handleChange}
-                        placeholder="+1 (555) 000-0000"
-                        className="border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 transition-colors bg-white placeholder-gray-400"
-                        data-ocid="contact.phone.input"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label
-                        htmlFor="c-company"
-                        className="text-xs font-display font-semibold text-gray-700 uppercase tracking-wide"
-                      >
-                        Company / Organization
-                      </label>
-                      <input
-                        id="c-company"
-                        type="text"
-                        name="company"
-                        value={form.company}
-                        onChange={handleChange}
-                        placeholder="Acme Corp"
-                        className="border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 transition-colors bg-white placeholder-gray-400"
-                        data-ocid="contact.company.input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label
-                      htmlFor="c-industry"
-                      className="text-xs font-display font-semibold text-gray-700 uppercase tracking-wide"
-                    >
-                      Industry
-                    </label>
-                    <select
-                      id="c-industry"
-                      name="industry"
-                      value={form.industry}
-                      onChange={handleChange}
-                      className="border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 transition-colors bg-white"
-                      data-ocid="contact.industry.select"
-                    >
-                      <option value="">Select your industry</option>
-                      {INDUSTRY_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label
-                      htmlFor="c-message"
-                      className="text-xs font-display font-semibold text-gray-700 uppercase tracking-wide"
-                    >
-                      Message / Project Brief{" "}
-                      <span className="text-red-500">*</span>
-                    </label>
-                    <textarea
-                      id="c-message"
-                      name="message"
-                      value={form.message}
-                      onChange={handleChange}
-                      placeholder="Describe your industry, the AI challenge you're facing, and what outcomes you're looking to achieve..."
-                      rows={4}
-                      className="border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 transition-colors resize-none bg-white placeholder-gray-400"
-                      data-ocid="contact.message.textarea"
-                    />
-                  </div>
-
-                  {error && (
-                    <p
-                      className="text-red-600 text-xs font-medium"
-                      data-ocid="contact.field_error"
-                    >
-                      {error}
-                    </p>
-                  )}
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full gradient-indigo text-white border-0 hover:opacity-90 transition-smooth font-display font-semibold text-base rounded-full mt-1"
-                    data-ocid="contact.submit_button"
-                  >
-                    Send Message →
-                  </Button>
-
-                  <p className="text-center text-xs text-gray-400">
-                    We respond within 4 business hours. No spam, ever.
-                  </p>
-                </form>
-              )}
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

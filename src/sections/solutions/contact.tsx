@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { submitContactForm } from "@/api/contactApi";
+
 import {
   Select,
   SelectContent,
@@ -286,7 +288,6 @@ export default function ContactUsPage() {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   }
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
@@ -299,49 +300,19 @@ export default function ContactUsPage() {
     setSubmitting(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          company: form.company,
-          service: form.service,
-          message: form.message,
-        }),
-      });
+      await submitContactForm(form);
 
-      const data = await response.json();
+      toast.success("Message sent successfully");
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message");
-      }
-
-      toast.success("Message sent! We'll be in touch within 24 hours.");
-
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        aiProduct: "",
-        message: "",
-      });
-
+      setForm(EMPTY_FORM);
       setErrors({});
       setSubmitted(true);
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong. Please try again.");
+    } catch (error: any) {
+      toast.error(error.message);
     } finally {
       setSubmitting(false);
     }
   }
-
   return (
     <div
       className="min-h-screen flex flex-col"

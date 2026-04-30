@@ -107,7 +107,6 @@ export default function AIPlatforms() {
           ref={labelRef}
           className={`scroll-hidden ${labelVisible ? "scroll-visible" : ""} flex justify-center mb-3`}
         >
-          <span className="section-label">Platform Expertise</span>
         </div>
 
         {/* Heading */}

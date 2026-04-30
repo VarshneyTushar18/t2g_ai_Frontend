@@ -658,7 +658,7 @@ export default function PortfolioPage() {
               </button>
 
               <a
-                href="/contact"
+                href="/ai-expert"
                 className="px-8 py-3.5 rounded-full font-semibold text-sm border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 transition-smooth"
                 data-ocid="portfolio.hero.start_project_button"
               >
@@ -793,14 +793,14 @@ export default function PortfolioPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <a
-                href="/contact"
+                href="/ai-expert"
                 className="px-8 py-3.5 rounded-full font-bold text-sm bg-white text-indigo-800 hover:bg-indigo-50 transition-smooth shadow-lg"
               >
                 Start Your Project →
               </a>
 
               <a
-                href="/hire-ai-developers"
+                href="/hire-ai-lovable-developer"
                 className="px-8 py-3.5 rounded-full font-bold text-sm border border-white/40 text-white/90 hover:bg-white/10 transition-smooth"
               >
                 View All Services

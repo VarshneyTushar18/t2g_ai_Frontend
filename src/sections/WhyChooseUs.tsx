@@ -80,12 +80,6 @@ export default function WhyChooseUs() {
           ref={headingRef}
           className={`text-center mb-8 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
         >
-          <span
-            className="section-label mb-5 inline-block"
-            data-ocid="why-us-label"
-          >
-            Why Tech2Globe AI
-          </span>
           <h2
             id="why-us-heading"
             className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mt-4 max-w-4xl mx-auto leading-tight"

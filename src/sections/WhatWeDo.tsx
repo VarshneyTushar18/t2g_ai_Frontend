@@ -34,7 +34,6 @@ export default function WhatWeDo() {
             ref={labelRef}
             className={`scroll-hidden ${labelVisible ? "scroll-visible" : ""} flex justify-center mb-4`}
           >
-            <span className="section-label">The Future Is Now</span>
           </div>
 
           {/* Heading */}

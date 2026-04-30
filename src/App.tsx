@@ -16,13 +16,19 @@ import IndustriesPage from "./sections/IndustriesPage";
 import AboutUsPage from "./sections/AboutUsPage";
 import BlogPage from "./sections/BlogPage";
 import OurTeamPage from "./sections/OurTeamPage";
-import HireCaffeineDeveloperPage from "./sections/HireCaffeineDeveloperPage";
 
 // 👇 ADD THIS (your new page)
 import Solutions from "./sections/solutions/index";
 import SolutionDetails from "./sections/solutionDetails";
 import ContactPage from "./sections/solutions/contact";
 import PortfolioPage from "./sections/solutions/PortfolioPage";
+import { HireLovablePage } from "./sections/solutions/HireLovablePage";
+import { HireOpenAIPage } from "./sections/solutions/HireOpenAIPage";
+import HireCaffeineDeveloperPage from "./sections/HireCaffeineDeveloperPage";
+import { HireEmergentAIPage } from "./sections/HireEmergentAIPage";
+import { HireUsPage } from "./sections/HireUsPage";
+import HireAIDevelopersPage from "./sections/HireAIDevelopersPage";
+
 
 function HomePage() {
   return (
@@ -66,7 +72,11 @@ export default function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/our-team" element={<OurTeamPage />} />
           <Route path="/hire-caffeine-developer" element={<HireCaffeineDeveloperPage />} />
-
+          <Route path="/hire-lovable" element={<HireLovablePage />} />
+          <Route path="/hire-openai" element={<HireOpenAIPage />} />
+          <Route path="/hire-emergent-ai" element={<HireEmergentAIPage />} />
+          <Route path="/hire-us" element={<HireUsPage />} />
+          <Route path="/hire-ai-lovable-developer" element={<HireAIDevelopersPage />} />
         </Routes>
       </main>
 

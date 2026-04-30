@@ -503,7 +503,7 @@ export default function AboutUsPage() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
             {...fadeUp(0.16)}
           >
-            <Link to="/contact" data-ocid="about.cta.get_in_touch.button">
+            <Link to="/ai-expert" data-ocid="about.cta.get_in_touch.button">
               <Button
                 size="lg"
                 className="bg-white text-indigo-700 hover:bg-indigo-50 border-0 font-display font-semibold px-8 rounded-full shadow-lg hover:shadow-xl transition-smooth"
