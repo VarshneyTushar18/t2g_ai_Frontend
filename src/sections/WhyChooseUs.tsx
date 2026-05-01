@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-us"
-      className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8"
+      className="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8"
       style={{ backgroundColor: "#f0f4ff" }}
       aria-labelledby="why-us-heading"
     >
@@ -78,11 +78,11 @@ export default function WhyChooseUs() {
         {/* Section header */}
         <div
           ref={headingRef}
-          className={`text-center mb-8 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
+          className={`text-center mb-6 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
         >
           <h2
             id="why-us-heading"
-            className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mt-4 max-w-4xl mx-auto leading-tight"
+            className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold max-w-4xl mx-auto leading-tight"
             style={{ color: "#0f172a" }}
           >
             Why Global Businesses Hire Their AI Engineers{" "}
@@ -120,7 +120,7 @@ function BenefitCard({ benefit, isVisible, delay }: BenefitCardProps) {
   return (
     <article
       className={`
-        rounded-xl p-4 sm:p-5
+        rounded-xl p-4
         scroll-hidden
         ${isVisible ? "scroll-visible" : ""}
       `}
@@ -151,7 +151,7 @@ function BenefitCard({ benefit, isVisible, delay }: BenefitCardProps) {
     >
       {/* Emoji icon */}
       <div
-        className="text-3xl mb-4 leading-none select-none"
+        className="text-3xl mb-3 leading-none select-none"
         aria-hidden="true"
       >
         {benefit.emoji}

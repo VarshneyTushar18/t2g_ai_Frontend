@@ -89,7 +89,7 @@ export default function AIPlatforms() {
   return (
     <section
       id="platforms"
-      className="relative py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ backgroundColor: "#f0f4ff" }}
     >
       {/* Background glow */}
@@ -112,7 +112,7 @@ export default function AIPlatforms() {
         {/* Heading */}
         <div
           ref={headingRef}
-          className={`scroll-hidden ${headingVisible ? "scroll-visible" : ""} text-center mb-6`}
+          className={`scroll-hidden ${headingVisible ? "scroll-visible" : ""} text-center mb-5`}
           style={{ transitionDelay: "0.1s" }}
         >
           <h2
@@ -127,7 +127,7 @@ export default function AIPlatforms() {
         {/* Cards grid — 7 cards, last row centered automatically */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 justify-items-center"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 justify-items-center"
           data-ocid="platforms-grid"
         >
           {platforms.map((platform, index) => (
@@ -181,7 +181,7 @@ function PlatformCard({ platform }: { platform: Platform }) {
       />
 
       {/* Card content */}
-      <div className="p-4 sm:p-5 lg:p-6">
+      <div className="p-4 sm:p-5">
         {/* Category tag */}
         <p
           className="font-orbitron text-xs font-semibold uppercase tracking-widest mb-3"
@@ -213,7 +213,7 @@ function PlatformCard({ platform }: { platform: Platform }) {
 
         {/* Accent divider */}
         <div
-          className="w-8 h-px mb-4"
+          className="w-8 h-px mb-3"
           style={{ background: platform.gradient }}
           aria-hidden="true"
         />

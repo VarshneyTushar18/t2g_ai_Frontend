@@ -770,7 +770,7 @@ export function HireUsPage() {
               <Button
                 className="px-8 py-3 text-base h-auto font-semibold text-white rounded-md transition-smooth active:scale-95"
                 style={{ background: ACCENT }}
-                onClick={() => navigate("/hire-ai-lovable-developer")}
+                onClick={() => navigate("/hire-us")}
                 data-ocid="hero.primary_button"
               >
                 Hire an AI Developer
@@ -809,7 +809,7 @@ export function HireUsPage() {
         className="py-10 bg-white border-b border-border"
         data-ocid="shipsmart.section"
       >
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -834,7 +834,7 @@ export function HireUsPage() {
         data-ocid="about.section"
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
+          <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

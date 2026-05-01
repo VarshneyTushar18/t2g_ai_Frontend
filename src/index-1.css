@@ -88,10 +88,13 @@
     padding-bottom: var(--section-py-lg) !important;
   }
 
-  main section:first-of-type,
   main section[id="hero"] {
     padding-top: clamp(4.5rem, 8vw, 6rem) !important;
     padding-bottom: clamp(3rem, 6vw, 4.5rem) !important;
+  }
+
+  main section:first-of-type:not([id="hero"]) {
+    padding-top: 120px !important;
   }
 
   main section>div[style*="padding"] {
@@ -112,10 +115,13 @@
       --section-py-lg: clamp(2rem, 8vw, 3rem);
     }
 
-    main section:first-of-type,
     main section[id="hero"] {
       padding-top: clamp(4rem, 16vw, 5rem) !important;
       padding-bottom: clamp(2.25rem, 9vw, 3rem) !important;
+    }
+
+    main section:first-of-type:not([id="hero"]) {
+      padding-top: 104px !important;
     }
   }
 

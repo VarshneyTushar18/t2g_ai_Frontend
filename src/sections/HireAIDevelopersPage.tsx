@@ -1170,7 +1170,7 @@ export default function HireAIDevelopersPage() {
                 <Button
                   variant="outline"
                   className="px-8 py-3 text-base h-auto"
-                  onClick={() => navigate("/hire-ai-lovable-developer")}
+                  onClick={() => navigate("/hire-us")}
                   data-ocid="hero.secondary_button"
                 >
                   View Our Services
@@ -1312,7 +1312,7 @@ export default function HireAIDevelopersPage() {
         style={{ background: "#f5f3ff" }}
         data-ocid="intro.section"
       >
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -2255,7 +2255,7 @@ export default function HireAIDevelopersPage() {
 
         {/* NLP FAQ */}
         <section className="py-12 bg-white" data-ocid="nlp.faq.section">
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -3139,7 +3139,7 @@ export default function HireAIDevelopersPage() {
 
         {/* Agents FAQ */}
         <section className="py-12 bg-white" data-ocid="agents.faq.section">
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -3966,7 +3966,7 @@ export default function HireAIDevelopersPage() {
           style={{ background: "#f5f3ff" }}
           data-ocid="llm.faq.section"
         >
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -58,7 +58,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8"
+      className="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8"
       style={{ backgroundColor: "#f8faff" }}
       aria-labelledby="services-heading"
     >
@@ -66,11 +66,11 @@ export default function Services() {
         {/* Section header */}
         <div
           ref={headingRef}
-          className={`text-center mb-8 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
+          className={`text-center mb-6 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
         >
           <h2
             id="services-heading"
-            className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mt-4"
+            className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold"
             style={{ color: "#0f172a" }}
           >
             What You Can <span className="gradient-text">Hire Us For</span>
@@ -80,7 +80,7 @@ export default function Services() {
         {/* Services grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
           data-ocid="services-grid"
         >
           {services.map((service, index) => (
@@ -107,7 +107,7 @@ function ServiceCard({ service, isVisible, delay }: ServiceCardProps) {
   return (
     <article
       className={`
-        group relative rounded-xl p-4 sm:p-5 lg:p-6
+        group relative rounded-xl p-4 sm:p-5
         border-l-4 border-l-purple-400/50
         scroll-hidden
         ${isVisible ? "scroll-visible" : ""}

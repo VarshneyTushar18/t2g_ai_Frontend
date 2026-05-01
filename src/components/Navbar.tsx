@@ -4,60 +4,32 @@ import { useNavigate } from "react-router-dom";
 
 type NavItem = {
   label: string;
-  type: "scroll" | "route" | "dropdown";
   href?: string;
   children?: NavItem[];
 };
 
 const NAV_LINKS: NavItem[] = [
   {
-    label: "Hire AI Engineer",
-    type: "dropdown",
+    label: "Hire AI Developers",
+    href: "/hire-ai-developer",
     children: [
-      {
-        label: "Hire AI Lovable Developer",
-        type: "route",
-        href: "/hire-lovable",
-      },
-      {
-        label: "Hire AI Emergent Developer",
-        type: "route",
-        href: "/hire-emergent-ai",
-      },
-      // {
-      //   label: "Hire OpenAI Developer",
-      //   type: "route",
-      //   href: "/hire-openai-developer",
-      // },
-      {
-        label: "Hire OpenAI Developer",
-        type: "route",
-        href: "/hire-openai",
-      },
-
-      {
-        label: "Hire Caffeine Developer",
-        type: "route",
-        href: "/hire-caffeine-developer",
-      },
-      {
-        label: "Hire Genw.AI Developer",
-        type: "route",
-        href: "/hire-genwai-developer",
-      },
+      { label: "Hire AI Lovable Developer", href: "/hire-lovable" },
+      { label: "Hire AI Emergent Developer", href: "/hire-emergent-ai" },
+      { label: "Hire OpenAI Developer", href: "/hire-openai" },
+      { label: "Hire Caffeine Developer", href: "/hire-caffeine-developer" },
+      { label: "Hire Genw.AI Developer", href: "/hire-genwai-developer" },
     ],
   },
-  { label: "Hire AI Developers", type: "route", href: "/hire-ai-developer" },
-  { label: "Industries", type: "route", href: "/industries" },
-  { label: "Portfolio", type: "route", href: "/portfolio" },
-  { label: "About Us", type: "route", href: "/about" },
-  { label: "Let's Talk with AI Expert", type: "route", href: "/ai-expert" },
+  { label: "Industries", href: "/industries" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "About Us", href: "/about" },
+  { label: "Let's Talk with AI Expert", href: "/ai-expert" },
 ];
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (el) {
-    const offset = -80; // navbar height offset
+    const offset = -100;
     const top = el.getBoundingClientRect().top + window.scrollY + offset;
 
     window.scrollTo({
@@ -83,16 +55,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
+  // ✅ FIXED NAVIGATION LOGIC
   const handleNavClick = (item: NavItem) => {
     setMobileOpen(false);
 
     if (!item.href) return;
 
-    if (item.type === "route") {
-      navigate(item.href);
-    } else if (item.type === "scroll") {
-      scrollToSection(item.href);
+    // scroll support if needed later (#section)
+    if (item.href.startsWith("#")) {
+      scrollToSection(item.href.replace("#", ""));
+      return;
     }
+
+    navigate(item.href);
   };
 
   return (
@@ -117,12 +92,14 @@ export default function Navbar() {
       }
     >
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex min-h-[76px] items-center justify-between py-2 sm:min-h-[88px] sm:py-3">
+          
+          {/* Logo */}
           <button onClick={() => navigate("/")} className="flex items-center">
             <img
               src="/assets/images/tech2globe-logo.png"
               alt="logo"
-              className="h-10 sm:h-12"
+              className="h-[50px] sm:h-[60px]"
             />
           </button>
 
@@ -130,21 +107,31 @@ export default function Navbar() {
           <ul className="hidden md:flex gap-6 items-center">
             {NAV_LINKS.map((item) => (
               <li key={item.label} className="relative">
-                {item.type === "dropdown" ? (
+                {item.children ? (
                   <div className="relative group">
-                    <button className="flex items-center gap-1 text-sm font-semibold text-gray-600 hover:text-green-600 transition">
-                      {item.label}
-                      <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
-                    </button>
+                    
+                    {/* Parent: clickable + dropdown */}
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => handleNavClick(item)}
+                        className="text-sm font-semibold text-gray-600 hover:text-green-600 transition"
+                      >
+                        {item.label}
+                      </button>
 
+                      <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                    </div>
+
+                    {/* Hover buffer */}
                     <div className="absolute left-0 top-full h-3 w-64"></div>
 
+                    {/* Dropdown */}
                     <div
                       className="absolute left-0 top-full mt-2 w-64 bg-white border shadow-lg rounded-md py-2 z-50
-                                 opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                                 transition-all duration-150"
+                      opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                      transition-all duration-150"
                     >
-                      {item.children?.map((child) => (
+                      {item.children.map((child) => (
                         <button
                           key={child.label}
                           onClick={() => handleNavClick(child)}
@@ -177,7 +164,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Toggle */}
           <button
             className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -198,14 +185,17 @@ export default function Navbar() {
         <div className="px-4 py-3 flex flex-col gap-4">
           {NAV_LINKS.map((item) => (
             <div key={item.label}>
-              {item.type === "dropdown" ? (
+              {item.children ? (
                 <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-gray-900">
+                  <button
+                    onClick={() => handleNavClick(item)}
+                    className="text-left text-sm font-semibold text-gray-900"
+                  >
                     {item.label}
-                  </span>
+                  </button>
 
                   <div className="pl-3 mt-2 flex flex-col gap-2">
-                    {item.children?.map((child) => (
+                    {item.children.map((child) => (
                       <button
                         key={child.label}
                         onClick={() => handleNavClick(child)}
@@ -230,7 +220,7 @@ export default function Navbar() {
           <button
             onClick={() => {
               setMobileOpen(false);
-              navigate("/ai-expert");
+              navigate("/hire-us");
             }}
             className="bg-purple-600 text-white py-2 rounded-lg text-sm font-bold hover:bg-purple-700 transition"
           >

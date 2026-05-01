@@ -800,7 +800,7 @@ export default function PortfolioPage() {
               </a>
 
               <a
-                href="/hire-ai-lovable-developer"
+                href="/hire-us"
                 className="px-8 py-3.5 rounded-full font-bold text-sm border border-white/40 text-white/90 hover:bg-white/10 transition-smooth"
               >
                 View All Services

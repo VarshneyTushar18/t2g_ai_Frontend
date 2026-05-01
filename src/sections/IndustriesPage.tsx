@@ -657,10 +657,7 @@ export default function IndustriesPage() {
                   size="lg"
                   variant="outline"
                   className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 transition-smooth font-display font-semibold px-8 text-base rounded-full bg-transparent"
-                  onClick={() => {
-                    const el = document.getElementById("contact");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
+                  onClick={() => navigate('/hire-us')}
                   data-ocid="hero.consultation.button"
                 >
                   Get a Free Consultation

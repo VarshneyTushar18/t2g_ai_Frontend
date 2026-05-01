@@ -45,13 +45,13 @@ export default function ContentSlide() {
     <section
       id="content-slide"
       style={{ backgroundColor: "#f8faff" }}
-      className="pt-16 pb-10 px-4 sm:px-6 lg:px-8"
+      className="pt-10 pb-8 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div
           ref={headerRef}
-          className="text-center mb-8"
+          className="text-center mb-6"
           style={{
             opacity: headerVisible ? 1 : 0,
             transform: headerVisible ? "translateY(0)" : "translateY(28px)",
@@ -59,7 +59,7 @@ export default function ContentSlide() {
           }}
         >
           <h2
-            className="font-orbitron font-bold text-3xl sm:text-4xl lg:text-5xl mb-5 leading-tight"
+            className="font-orbitron font-bold text-3xl sm:text-4xl lg:text-5xl mb-3 leading-tight"
             style={{
               background: "linear-gradient(90deg, #00f5c8, #7c3aed)",
               WebkitBackgroundClip: "text",
@@ -82,7 +82,7 @@ export default function ContentSlide() {
         {/* Cards Grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
         >
           {cards.map((card, index) => (
             <div
@@ -114,7 +114,7 @@ export default function ContentSlide() {
                 }}
               />
 
-              <div className="p-8 flex flex-col items-center text-center flex-1 gap-5">
+              <div className="p-5 sm:p-6 flex flex-col items-center text-center flex-1 gap-4">
                 {/* Icon */}
                 <div
                   className="text-4xl w-16 h-16 flex items-center justify-center rounded-2xl"

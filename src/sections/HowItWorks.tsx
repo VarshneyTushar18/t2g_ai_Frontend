@@ -92,7 +92,7 @@ export default function HowItWorks() {
   return (
     <section
       id="process"
-      className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8"
+      className="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8"
       style={{ backgroundColor: "#f8faff" }}
       aria-labelledby="process-heading"
     >
@@ -100,12 +100,12 @@ export default function HowItWorks() {
         {/* Section header */}
         <div
           ref={headingRef}
-          className={`text-center mb-8 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
+          className={`text-center mb-6 scroll-hidden ${headingVisible ? "scroll-visible" : ""}`}
         >
       
           <h2
             id="process-heading"
-            className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mt-4 leading-tight"
+            className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight"
             style={{ color: "#0f172a" }}
           >
             From Idea to <span className="gradient-text">Live Product</span>
@@ -139,7 +139,7 @@ export default function HowItWorks() {
           />
 
           {/* Steps */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             {steps.map((step, index) => (
               <StepItem
                 key={step.number}
@@ -168,7 +168,7 @@ interface StepItemProps {
 function StepItem({ step, isVisible, delay, isLast }: StepItemProps) {
   return (
     <article
-      className={`relative flex gap-6 items-start scroll-hidden ${isVisible ? "scroll-visible" : ""}`}
+      className={`relative flex gap-5 items-start scroll-hidden ${isVisible ? "scroll-visible" : ""}`}
       style={{
         transitionDelay: isVisible ? `${delay}ms` : "0ms",
         paddingBottom: isLast ? "0" : "0",

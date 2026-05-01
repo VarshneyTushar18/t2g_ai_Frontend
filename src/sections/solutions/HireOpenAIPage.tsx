@@ -791,7 +791,7 @@ export function HireOpenAIPage() {
               <Button
                 variant="outline"
                 className="btn-secondary px-8 py-3 text-base h-auto"
-                onClick={scrollToOverview}
+                onClick={() => navigate("/hire-us")}
                 data-ocid="openai-hero.secondary_button"
               >
                 View Our Services
@@ -821,7 +821,7 @@ export function HireOpenAIPage() {
         className="py-10 bg-white border-b border-border"
         data-ocid="openai-shipsmart.section"
       >
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -852,7 +852,7 @@ export function HireOpenAIPage() {
         data-ocid="openai-about.section"
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
+          <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1507,7 +1507,7 @@ export function HireOpenAIPage() {
                   border: "1px solid rgba(167,139,250,0.5)",
                   color: "#a78bfa",
                 }}
-                onClick={() => navigate("/hire-ai-lovable-developer")}
+                onClick={() => navigate("/hire-us")}
                 data-ocid="openai-cta.secondary_button"
               >
                 Let's Talk with an AI Expert

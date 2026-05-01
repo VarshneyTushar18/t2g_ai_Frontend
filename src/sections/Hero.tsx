@@ -38,7 +38,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+      className="herohome relative min-h-[clamp(460px,72vh,600px)] flex flex-col items-center justify-center overflow-hidden pb-4"
       style={{ backgroundColor: "#f0f4ff" }}
       aria-label="Hero section"
     >
@@ -100,7 +100,7 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-4 pt-20 sm:pt-24 pb-10 sm:pb-14 lg:pb-16 w-full">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-2 pt-8 sm:pt-12 pb-4 sm:pb-6 w-full">
         {/* Animated badge */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -109,7 +109,7 @@ export default function Hero() {
           data-ocid="hero-badge"
         >
           <div
-            className="inline-flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full"
             style={{
               background: "rgba(0,0,0,0.04)",
               backdropFilter: "blur(12px)",
@@ -145,12 +145,12 @@ export default function Hero() {
         >
           <h1
             className="font-orbitron font-black leading-[1.1] tracking-tight"
-            style={{ fontSize: "clamp(1.75rem, 6vw, 5rem)" }}
+            style={{ fontSize: "clamp(1.75rem, 5.5vw, 4.5rem)" }}
           >
             <span className="gradient-text-hero block">
               Your Idea. Built by AI.
             </span>
-            <span className="gradient-text-hero block mt-1 sm:mt-2">
+            <span className="gradient-text-hero block mt-1">
               Delivered in Minutes.
             </span>
           </h1>
@@ -161,7 +161,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          className="font-space-grotesk max-w-3xl text-sm sm:text-base md:text-lg leading-relaxed px-2"
+          className="font-space-grotesk max-w-3xl text-sm sm:text-base md:text-lg leading-snug px-2"
           style={{ color: "#475569" }}
           data-ocid="hero-subheadline"
         >
@@ -179,14 +179,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center w-full px-2"
+          className="flex flex-col sm:flex-row gap-3 items-center justify-center w-full px-2"
           data-ocid="hero-cta-group"
         >
           <button
             type="button"
             onClick={() => navigate("/ai-expert")}
             className="relative overflow-hidden font-orbitron text-xs sm:text-sm font-bold tracking-wider 
-  px-6 sm:px-8 py-3 sm:py-4 rounded-xl w-full sm:w-auto 
+  px-6 sm:px-8 py-2.5 rounded-xl w-full sm:w-auto 
   border border-cyan-400/40 
   bg-gradient-to-r from-[#001f1a] to-[#003d33] 
   text-cyan-300 
@@ -203,7 +203,7 @@ export default function Hero() {
             type="button"
             onClick={() => scrollTo("process")}
             className="relative overflow-hidden font-orbitron text-xs sm:text-sm font-bold tracking-wider 
-  px-6 sm:px-8 py-3 sm:py-4 rounded-xl w-full sm:w-auto 
+  px-6 sm:px-8 py-2.5 rounded-xl w-full sm:w-auto 
   border border-cyan-400/30 
   bg-transparent 
   text-cyan-400 
@@ -222,12 +222,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-          className="flex flex-wrap items-center justify-center gap-x-0 gap-y-2 mt-1 w-full"
+          className="flex flex-wrap items-center justify-center gap-x-0 gap-y-1.5 w-full"
           data-ocid="hero-trust-row"
           aria-label="Trust indicators"
         >
           {TRUST_ITEMS.map((item, i) => (
-            <div key={item} className="flex items-center">
+            <div key={item} className="flex items-center pt-5">
               {i > 0 && (
                 <span
                   className="w-1 h-1 rounded-full mx-3 sm:mx-4 flex-shrink-0"
@@ -251,7 +251,7 @@ export default function Hero() {
 
       {/* Bottom fade overlay */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
         style={{
           background:
             "linear-gradient(to bottom, transparent, rgba(240,244,255,0.95))",

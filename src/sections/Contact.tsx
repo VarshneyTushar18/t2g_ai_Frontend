@@ -127,7 +127,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-10 sm:py-14 lg:py-16 relative overflow-hidden"
+      className="py-8 sm:py-10 lg:py-12 relative overflow-hidden"
       style={{ backgroundColor: "#f0f4ff" }}
     >
       {/* Background glow */}
@@ -146,14 +146,14 @@ export default function Contact() {
       >
         {/* Heading */}
         <h2
-          className="font-orbitron text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight"
+          className="font-orbitron text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 leading-tight"
           style={{ color: "#0f172a" }}
         >
           Ready to Build Something{" "}
           <span className="gradient-text">Extraordinary?</span>
         </h2>
         <p
-          className="font-space-grotesk text-base md:text-lg mb-6 max-w-2xl mx-auto"
+          className="font-space-grotesk text-base md:text-lg mb-5 max-w-2xl mx-auto"
           style={{ color: "#475569" }}
         >
           Tell us your idea. We assign the right AI Engineer. Your product ships
@@ -162,7 +162,7 @@ export default function Contact() {
 
         {/* Glass Panel */}
         <div
-          className="max-w-4xl mx-auto rounded-2xl p-4 sm:p-6 md:p-8 text-left"
+          className="max-w-4xl mx-auto rounded-2xl p-4 sm:p-5 md:p-6 text-left"
           style={{
             background: "rgba(255,255,255,0.90)",
             backdropFilter: "blur(16px)",
@@ -208,7 +208,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="rounded-2xl p-8 lg:p-10"
+              className="rounded-2xl p-5 sm:p-6 lg:p-7"
               style={{
                 background: "rgba(255,255,255,0.95)",
                 backdropFilter: "blur(12px)",
@@ -219,7 +219,7 @@ export default function Contact() {
               data-ocid="contact-form"
             >
               {/* Name + Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div className="flex flex-col gap-1.5">
                   <Label
                     htmlFor="cu-name"
@@ -277,7 +277,7 @@ export default function Contact() {
               </div>
 
               {/* Phone + Company */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div className="flex flex-col gap-1.5">
                   <Label
                     htmlFor="cu-phone"
@@ -320,8 +320,8 @@ export default function Contact() {
               </div>
 
               {/* Service + AI Product — side by side on desktop */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-                <div className="flex flex-col gap-1.5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                {/* <div className="flex flex-col gap-1.5">
                   <Label
                     htmlFor="cu-service"
                     className="text-sm font-medium"
@@ -364,7 +364,7 @@ export default function Contact() {
                       {errors.service}
                     </p>
                   )}
-                </div>
+                </div> */}
 
                 <div className="flex flex-col gap-1.5">
                   <Label
@@ -406,7 +406,7 @@ export default function Contact() {
               </div>
 
               {/* Message */}
-              <div className="flex flex-col gap-1.5 mb-7">
+              <div className="flex flex-col gap-1.5 mb-5">
                 <Label
                   htmlFor="cu-message"
                   className="text-sm font-medium"

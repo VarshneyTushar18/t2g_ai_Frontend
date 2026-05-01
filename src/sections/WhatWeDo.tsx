@@ -14,7 +14,7 @@ export default function WhatWeDo() {
     <section
       id="what-we-do"
       ref={sectionRef}
-      className="relative py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-5 sm:py-6 lg:py-6 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ backgroundColor: "#f8faff" }}
     >
       {/* Background glow overlay */}
@@ -28,11 +28,11 @@ export default function WhatWeDo() {
 
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Glassmorphism panel */}
-        <div className="glassmorphism-dark rounded-2xl p-6 md:p-8 text-center">
+        <div className="glassmorphism-dark rounded-2xl text-center">
           {/* Section label */}
           <div
             ref={labelRef}
-            className={`scroll-hidden ${labelVisible ? "scroll-visible" : ""} flex justify-center mb-4`}
+            className={`scroll-hidden ${labelVisible ? "scroll-visible" : ""} flex justify-center mb-2`}
           >
           </div>
 
@@ -43,7 +43,7 @@ export default function WhatWeDo() {
             style={{ transitionDelay: "0.1s" }}
           >
             <h2
-              className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black leading-tight mb-4"
+              className="font-orbitron text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black leading-tight mb-2"
               style={{ color: "#0f172a" }}
             >
               The Future of Development is Here —{" "}
@@ -53,7 +53,7 @@ export default function WhatWeDo() {
 
           {/* Divider line */}
           <div
-            className="w-16 h-0.5 mx-auto mb-6"
+            className="w-16 h-0.5 mx-auto mb-3"
             style={{ background: "linear-gradient(90deg, #00c49a, #7c3aed)" }}
           />
 
@@ -64,7 +64,7 @@ export default function WhatWeDo() {
             style={{ transitionDelay: "0.2s" }}
           >
             <p
-              className="font-space-grotesk text-sm sm:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6 max-w-3xl mx-auto"
+              className="font-space-grotesk text-sm sm:text-base lg:text-lg leading-relaxed mb-3 max-w-3xl mx-auto"
               style={{ color: "#475569" }}
             >
               Forget months of development cycles. At Tech2Globe AI, our
@@ -100,12 +100,12 @@ export default function WhatWeDo() {
                 : { opacity: 0, scale: 0.9 }
             }
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-4 mt-6"
+            className="flex flex-wrap justify-center gap-2.5 mt-4"
           >
             {["Fast", "Smart", "Scalable", "Precision AI"].map((tag) => (
               <span
                 key={tag}
-                className="font-orbitron text-xs font-semibold px-4 py-2 rounded-full"
+                className="font-orbitron text-xs font-semibold px-3 py-1.5 rounded-full"
                 style={{
                   background: "rgba(0, 196, 154, 0.08)",
                   border: "1px solid rgba(0, 196, 154, 0.25)",

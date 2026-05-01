@@ -718,7 +718,7 @@ export default function LandingPage() {
       <section id="intro" className="bg-white py-16" data-ocid="intro.section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
-            className="max-w-4xl mx-auto"
+            className=""
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -758,7 +758,7 @@ export default function LandingPage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
-            className="max-w-4xl mx-auto"
+            className=""
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -1359,7 +1359,7 @@ export default function LandingPage() {
 
       {/* ── FAQ ──────────────────────────────────────────────────── */}
       <section id="faq" className="bg-white py-16" data-ocid="faq.section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="px-4 sm:px-6">
           <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -1472,6 +1472,5 @@ export default function LandingPage() {
     </>
   );
 }
-
 
 

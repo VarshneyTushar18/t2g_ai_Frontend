@@ -824,7 +824,7 @@ export function HireLovablePage() {
         className="py-10 bg-white border-b border-border"
         data-ocid="shipsmart.section"
       >
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -851,7 +851,7 @@ export function HireLovablePage() {
         data-ocid="about.section"
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
+          <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -140,6 +140,8 @@ body,
     padding-bottom: clamp(3rem, 6vw, 4.5rem) !important;
   }
 
+  
+
   main section>div[style*="padding"] {
     padding-top: var(--section-padding-y) !important;
     padding-bottom: var(--section-padding-y) !important;
@@ -534,3 +536,4 @@ main h1 {
   font-weight: 600 !important;
   font-family: "Poppins", sans-serif !important;
 }
+

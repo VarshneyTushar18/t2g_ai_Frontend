@@ -1165,7 +1165,7 @@ export default function ContactUsPage() {
 
                     {/* Service + AI Product — side by side on desktop */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-                      <div className="flex flex-col gap-1.5">
+                      {/* <div className="flex flex-col gap-1.5">
                         <Label
                           htmlFor="cu-service"
                           className="text-sm font-medium"
@@ -1206,7 +1206,7 @@ export default function ContactUsPage() {
                             {errors.service}
                           </p>
                         )}
-                      </div>
+                      </div> */}
 
                       <div className="flex flex-col gap-1.5">
                         <Label

@@ -77,7 +77,7 @@ export default function Nav() {
         boxShadow: scrolled ? "0 2px 16px rgba(0,0,0,0.08)" : "none",
       }}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[76px] py-2 sm:min-h-[88px] sm:py-3 flex items-center justify-between gap-4">
 
         {/* Logo */}
         <Link
@@ -88,7 +88,7 @@ export default function Nav() {
           <img
             src="/assets/tech2globe-logo.png"
             alt="Tech2Globe"
-            className="h-12 w-auto object-contain"
+            className="h-[60px] w-auto object-contain"
           />
         </Link>
 
