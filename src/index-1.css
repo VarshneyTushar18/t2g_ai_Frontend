@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --font-display: "Orbitron", sans-serif;
-    --font-body: "Space Grotesk", sans-serif;
+    --font-display: "Poppins", sans-serif;
+    --font-body: "Poppins", sans-serif;
     --font-mono: "Courier New", monospace;
     --radius: 0.75rem;
     /* Light theme background */
@@ -51,8 +51,8 @@
     --gradient-hero: linear-gradient(135deg, #00f5c8 0%, #7c3aed 100%);
     --gradient-glow-hero: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.18) 0%, rgba(0, 245, 200, 0.08) 50%, transparent 100%);
     /* Section spacing */
-    --section-py: 3rem;
-    --section-py-lg: 4rem;
+    --section-py: clamp(2rem, 4vw, 3rem);
+    --section-py-lg: clamp(2.5rem, 5vw, 4rem);
   }
 
   * {
@@ -67,7 +67,7 @@
   body {
     background-color: #f8faff;
     color: oklch(0.1 0.01 260);
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -79,7 +79,44 @@
   h4,
   h5,
   h6 {
-    font-family: "Orbitron", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600 !important;
+  }
+
+  main section {
+    padding-top: var(--section-py-lg) !important;
+    padding-bottom: var(--section-py-lg) !important;
+  }
+
+  main section:first-of-type,
+  main section[id="hero"] {
+    padding-top: clamp(4.5rem, 8vw, 6rem) !important;
+    padding-bottom: clamp(3rem, 6vw, 4.5rem) !important;
+  }
+
+  main section>div[style*="padding"] {
+    padding-top: var(--section-py-lg) !important;
+    padding-bottom: var(--section-py-lg) !important;
+  }
+
+  main section>[class*="py-16"],
+  main section>[class*="py-20"],
+  main section>[class*="py-24"] {
+    padding-top: var(--section-py-lg) !important;
+    padding-bottom: var(--section-py-lg) !important;
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --section-py: clamp(1.75rem, 7vw, 2.5rem);
+      --section-py-lg: clamp(2rem, 8vw, 3rem);
+    }
+
+    main section:first-of-type,
+    main section[id="hero"] {
+      padding-top: clamp(4rem, 16vw, 5rem) !important;
+      padding-bottom: clamp(2.25rem, 9vw, 3rem) !important;
+    }
   }
 
   ::selection {
@@ -198,7 +235,7 @@
     background: rgba(0, 196, 154, 0.1);
     border: 1px solid rgba(0, 196, 154, 0.3);
     color: #007a64;
-    font-family: "Orbitron", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -207,7 +244,7 @@
 
   /* Neon accent number */
   .neon-number {
-    font-family: "Orbitron", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 3rem;
     font-weight: 900;
     background: linear-gradient(135deg, rgba(0, 196, 154, 0.25), rgba(124, 58, 237, 0.15));
@@ -281,11 +318,11 @@
 
   /* Text utilities */
   .font-orbitron {
-    font-family: "Orbitron", sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .font-space-grotesk {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   /* Hover card lift */

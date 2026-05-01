@@ -49,7 +49,7 @@ const AI_PRODUCTS = [
 function ConsultationBox() {
   return (
     <div
-      className="flex flex-col rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1"
+      className="flex flex-col rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1"
       style={{
         background: "linear-gradient(135deg, #4f8ef7 0%, #7c5cbf 100%)",
         boxShadow: "0 8px 32px rgba(79,142,247,0.30)",
@@ -58,7 +58,7 @@ function ConsultationBox() {
     >
       {/* Icon */}
       <div
-        className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl"
+        className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl"
         style={{ background: "rgba(255,255,255,0.18)" }}
       >
         <Calendar size={26} color="#ffffff" />
@@ -72,7 +72,7 @@ function ConsultationBox() {
         Book a Free Consultation
       </h3>
       <p
-        className="mb-8 leading-relaxed text-sm"
+        className="mb-5 leading-relaxed text-sm"
         style={{ color: "rgba(255,255,255,0.82)" }}
       >
         Talk directly with our AI specialists. Get a tailored roadmap for your
@@ -80,7 +80,7 @@ function ConsultationBox() {
       </p>
 
       {/* Trust badges */}
-      <div className="mb-8 flex flex-wrap gap-3">
+      <div className="mb-5 flex flex-wrap gap-2">
         {[
           { icon: Users, text: "50+ AI Experts" },
           { icon: MessageSquare, text: "24h Response" },
@@ -131,10 +131,10 @@ function SelectAIProductBox() {
       data-ocid="select-ai-product.card"
     >
       {/* Card header */}
-      <div className="p-8 pb-6">
+      <div className="p-5 pb-5 sm:p-6 sm:pb-5">
         {/* Icon */}
         <div
-          className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl"
+          className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl"
           style={{
             background: "rgba(79,142,247,0.08)",
             border: "1.5px solid rgba(79,142,247,0.22)",
@@ -150,7 +150,7 @@ function SelectAIProductBox() {
           Select AI Product
         </h3>
         <p
-          className="mb-6 text-sm leading-relaxed"
+          className="mb-5 text-sm leading-relaxed"
           style={{ color: "#6b7280" }}
         >
           Choose the right AI developer for your stack. Instantly hire vetted
@@ -161,7 +161,7 @@ function SelectAIProductBox() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex w-full items-center justify-between gap-3 rounded-xl px-5 py-3.5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4f8ef7]"
+          className="flex w-full items-center justify-between gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4f8ef7]"
           style={{
             background: open
               ? "rgba(79,142,247,0.08)"
@@ -261,13 +261,13 @@ function SelectAIProductBox() {
 export default function ServiceBoxSection() {
   return (
     <section
-      className="py-20"
+        className="py-14"
       style={{ background: "#e8f0fe" }}
       data-ocid="service-box.section"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 sm:mb-10 text-center">
           <span
             className="mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest"
             style={{
@@ -294,7 +294,7 @@ export default function ServiceBoxSection() {
         </div>
 
         {/* Two boxes */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:gap-6">
           <ConsultationBox />
           <SelectAIProductBox />
         </div>

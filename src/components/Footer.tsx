@@ -22,13 +22,44 @@ const FOOTER_SOLUTIONS = [
 
 const FOOTER_COMPANY = ["About Us", "Our Team", "Portfolio", "Blog", "Careers"];
 
+const FOOTER_SERVICE_LINKS: Record<string, string> = {
+  "Hire AI Lovable Developer": "/hire-lovable",
+  "Hire AI Emergent Developer": "/hire-emergent-ai",
+  "Hire OpenAI Developer": "/hire-openai",
+  "Hire Caffeine Developer": "/hire-caffeine-developer",
+  "Hire Genw.AI Developer": "/hire-ai-developer",
+};
+
+const FOOTER_SOLUTION_LINKS: Record<string, string> = {
+  "Hire AI Developer": "/hire-ai-developer",
+  "Hire Us": "/hire-us",
+};
+
 const FOOTER_COMPANY_LINKS: Record<string, string> = {
   "About Us": "/about",
   "Our Team": "/our-team",
   Portfolio: "/portfolio",
   Blog: "/blog",
-  Careers: "/",
+  Careers: "/ai-expert",
 };
+
+const FOOTER_LINK_GROUPS = [
+  {
+    title: "Hire AI Engineer",
+    data: FOOTER_SERVICES,
+    links: FOOTER_SERVICE_LINKS,
+  },
+  {
+    title: "Solutions",
+    data: FOOTER_SOLUTIONS,
+    links: FOOTER_SOLUTION_LINKS,
+  },
+  {
+    title: "Company",
+    data: FOOTER_COMPANY,
+    links: FOOTER_COMPANY_LINKS,
+  },
+];
 
 export default function Footer() {
   const hostname =
@@ -50,11 +81,13 @@ export default function Footer() {
 
             {/* Brand */}
             <div className="lg:col-span-2">
-              <img
-                src="/assets/tech2globe-logo.png"
-                alt="Tech2Globe"
-                className="h-12 mb-5 brightness-0 invert"
-              />
+              <Link to="/" aria-label="Go to homepage" className="inline-block">
+                <img
+                  src="/assets/tech2globe-logo.png"
+                  alt="Tech2Globe"
+                  className="h-14 sm:h-16 mb-5 brightness-0 invert"
+                />
+              </Link>
 
               <p className="text-white/60 text-sm leading-relaxed max-w-sm">
                 Building intelligent AI solutions for forward-thinking businesses.
@@ -106,11 +139,7 @@ export default function Footer() {
             </div>
 
             {/* Columns */}
-            {[
-              { title: "Hire AI Engineer", data: FOOTER_SERVICES },
-              { title: "Solutions", data: FOOTER_SOLUTIONS },
-              { title: "Company", data: FOOTER_COMPANY },
-            ].map((section) => (
+            {FOOTER_LINK_GROUPS.map((section) => (
               <div key={section.title}>
                 <h4 className="text-xs font-semibold tracking-widest uppercase text-white/40 mb-5">
                   {section.title}
@@ -120,11 +149,7 @@ export default function Footer() {
                   {section.data.map((item) => (
                     <li key={item}>
                       <Link
-                        to={
-                          section.title === "Company"
-                            ? FOOTER_COMPANY_LINKS[item] ?? "/"
-                            : "/"
-                        }
+                        to={section.links[item] ?? "/"}
                         className="text-sm text-white/60 hover:text-white relative group transition"
                       >
                         {item}

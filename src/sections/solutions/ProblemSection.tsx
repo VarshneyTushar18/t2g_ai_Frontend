@@ -12,7 +12,7 @@ export default function ProblemSection({ data }: Props) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section title */}
-        <div className="mb-14">
+        <div className="mb-8 sm:mb-10">
           <div className="inline-block">
             <h2
               className="text-4xl font-bold mb-2"
@@ -27,11 +27,11 @@ export default function ProblemSection({ data }: Props) {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
           {/* Left — Problem paragraph */}
           <div>
             <p
-              className="text-lg font-semibold leading-relaxed mb-6"
+              className="text-lg font-semibold leading-relaxed mb-4"
               style={{ color: "#1a1a2e" }}
             >
               {data.problemParagraph1}
@@ -46,7 +46,7 @@ export default function ProblemSection({ data }: Props) {
             {data.painPoints.map((point, i) => (
               <div
                 key={point.title}
-                className="flex items-start gap-4 p-5 rounded-xl transition-smooth hover:scale-[1.02]"
+                className="flex items-start gap-4 p-4 rounded-xl transition-smooth hover:scale-[1.02]"
                 style={{
                   background: "#ffffff",
                   border: `1px solid ${point.color}22`,

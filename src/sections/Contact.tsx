@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Send } from "lucide-react";
+import { Send, Workflow } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -34,12 +34,19 @@ const initialForm: FormData = {
   message: "",
 };
 
-const SERVICE_OPTIONS = ["AI Development", "Automation", "Consulting"];
+const SERVICE_OPTIONS = [
+  "AI Integration",
+  "Agentic AI",
+  "Workflow Automation",
+  "AI Chatbot"
+];
 
 const AI_PRODUCT_OPTIONS = [
-  "Chatbot",
-  "Recommendation Engine",
-  "Computer Vision",
+  "Hire Lovable Developer",
+  "Hire Emergent Developer",
+  "Hire OpenAI Developer",
+  "Hire Caffeine AI Developer",
+  "Hire GenW.ai Developer",
 ];
 
 const inputClass =

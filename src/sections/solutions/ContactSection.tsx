@@ -31,7 +31,7 @@ const AI_PRODUCT_OPTIONS = [
   "Hire Caffeine AI Developer",
   "Hire GenW.ai Developer",
 ];
-
+  
 interface EnquiryActor {
   submitEnquiry?: (input: EnquiryInput) => Promise<bigint>;
 }
@@ -47,12 +47,10 @@ interface ContactFormData {
 }
 
 const SERVICE_OPTIONS = [
-  "AI Data Analytics",
-  "AI Automation",
-  "Cloud Migration",
-  "Predictive Modeling",
-  "Enterprise Security",
-  "Other",
+  "AI Integration",
+  "Agentic AI",
+  "Workflow Automation",
+  "AI Chatbot"
 ];
 
 const CONTACT_DETAILS = [
@@ -174,7 +172,7 @@ export default function ContactSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="mb-16 text-center">
+        <div className="mb-8 sm:mb-10 text-center">
           <span
             className="mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold tracking-widest uppercase"
             style={{
@@ -200,9 +198,9 @@ export default function ContactSection() {
         </div>
 
         {/* Two-column layout */}
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Left: description + contact detail cards */}
-          <div className="flex flex-col justify-center gap-8">
+          <div className="flex flex-col justify-center gap-6">
             <div>
               <h3
                 className="mb-4 text-2xl font-bold"
@@ -223,7 +221,7 @@ export default function ContactSection() {
                 <a
                   key={label}
                   href={href}
-                  className="flex items-center gap-4 rounded-xl p-5 transition-smooth hover:scale-[1.02]"
+                  className="flex items-center gap-4 rounded-xl p-4 transition-smooth hover:scale-[1.02]"
                   style={{
                     background: "#ffffff",
                     border: "1px solid rgba(79,142,247,0.12)",
@@ -274,7 +272,7 @@ export default function ContactSection() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="rounded-2xl p-8"
+              className="rounded-2xl p-5 sm:p-6"
               style={{
                 background: "#ffffff",
                 border: "1px solid rgba(79,142,247,0.15)",

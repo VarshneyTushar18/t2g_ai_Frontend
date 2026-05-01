@@ -12,7 +12,7 @@ export default function FeaturesSection({ data }: Props) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <h2
             className="text-4xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)", color: "#1a1a2e" }}
@@ -25,11 +25,11 @@ export default function FeaturesSection({ data }: Props) {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {data.features.map((feature, i) => (
             <div
               key={feature.name}
-              className="group relative p-6 rounded-2xl flex flex-col transition-smooth hover:scale-[1.02] cursor-default"
+              className="group relative p-5 rounded-2xl flex flex-col transition-smooth hover:scale-[1.02] cursor-default"
               style={{
                 background: "#ffffff",
                 border: "1px solid rgba(0,0,0,0.08)",
@@ -51,7 +51,7 @@ export default function FeaturesSection({ data }: Props) {
             >
               {/* Icon */}
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                 style={{
                   background: `${feature.color}12`,
                 }}
@@ -74,7 +74,7 @@ export default function FeaturesSection({ data }: Props) {
 
               <a
                 href={feature.link}
-                className="inline-flex items-center gap-1 text-sm font-medium mt-5 transition-fast hover:gap-2"
+                className="inline-flex items-center gap-1 text-sm font-medium mt-4 transition-fast hover:gap-2"
                 style={{ color: feature.color }}
               >
                 Learn More →

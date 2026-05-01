@@ -88,7 +88,7 @@ export default function Nav() {
           <img
             src="/assets/tech2globe-logo.png"
             alt="Tech2Globe"
-            className="h-10 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
         </Link>
 

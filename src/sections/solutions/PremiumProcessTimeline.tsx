@@ -144,8 +144,8 @@ export function PremiumProcessTimeline({
       className="relative overflow-hidden"
       style={{
         background: "#f1f5f9",
-        paddingTop: "clamp(50px, 6vw, 80px)",
-        paddingBottom: "clamp(50px, 6vw, 80px)",
+        paddingTop: "var(--section-padding-y)",
+        paddingBottom: "var(--section-padding-y)",
       }}
     >
       {/* Subtle background accent */}
@@ -160,7 +160,7 @@ export function PremiumProcessTimeline({
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-8 sm:mb-10 max-w-2xl">
           <h2
             className="text-[42px] font-bold leading-tight mb-4"
             style={{ color: "#1a1a2e", fontFamily: "var(--font-display)" }}

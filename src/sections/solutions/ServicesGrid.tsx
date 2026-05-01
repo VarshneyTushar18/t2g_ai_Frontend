@@ -32,7 +32,7 @@ export function ServicesGrid({ services }: Props) {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <span
             className="inline-block text-xs font-semibold tracking-widest uppercase mb-3"
             style={{ color: "#4f8ef7", letterSpacing: "0.12em" }}
@@ -59,7 +59,7 @@ export function ServicesGrid({ services }: Props) {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {services.map((service, i) => (
             <ServiceCardItem key={service.title} service={service} index={i} />
           ))}
@@ -107,7 +107,7 @@ function ServiceCardItem({
       ref={cardRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative rounded-2xl p-6 flex flex-col overflow-hidden cursor-default"
+      className="group relative rounded-2xl p-5 flex flex-col overflow-hidden cursor-default"
       style={{
         background: "#ffffff",
         border: "1px solid rgba(0,0,0,0.08)",
@@ -119,7 +119,7 @@ function ServiceCardItem({
     >
       {/* Icon */}
       <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 flex-shrink-0"
         style={{
           background: `${service.color}12`,
         }}
@@ -146,7 +146,7 @@ function ServiceCardItem({
       </p>
 
       {/* Explore link */}
-      <div className="flex justify-end mt-5">
+      <div className="flex justify-end mt-4">
         <span
           className="text-[13px] font-medium transition-all duration-200 group-hover:gap-2 inline-flex items-center gap-1 cursor-pointer"
           style={{ color: service.color }}

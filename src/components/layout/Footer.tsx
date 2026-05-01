@@ -79,7 +79,7 @@ export default function Nav() {
 
         {/* Logo */}
         <Link to="/" onClick={closeMobile}>
-          <img src="/assets/tech2globe-logo.png" className="h-10" />
+          <img src="/assets/tech2globe-logo.png" className="h-12" />
         </Link>
 
         {/* Desktop */}

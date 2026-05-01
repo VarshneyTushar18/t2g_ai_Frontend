@@ -451,7 +451,7 @@ export default function ContactUsPage() {
 
           {/* Hero content */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-24">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               {/* Left: Headline + CTAs */}
               <div>
                 <motion.div
@@ -793,7 +793,7 @@ export default function ContactUsPage() {
           <div className="relative z-10 max-w-7xl mx-auto">
             {/* Section header */}
             <motion.div
-              className="text-center mb-16"
+              className="text-center mb-8 sm:mb-10"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

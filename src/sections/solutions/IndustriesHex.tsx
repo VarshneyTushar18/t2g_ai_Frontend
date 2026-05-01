@@ -29,7 +29,7 @@ export function IndustriesHex({ industries }: IndustriesHexProps) {
         className="max-w-6xl mx-auto px-6"
       >
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <h2
             className="font-display font-bold"
             style={{

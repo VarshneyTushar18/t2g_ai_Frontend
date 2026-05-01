@@ -47,7 +47,7 @@ const NAV_LINKS: NavItem[] = [
       },
     ],
   },
-  { label: "Hire AI Developers", type: "route", href: "/hire-ai-lovable-developer" },
+  { label: "Hire AI Developers", type: "route", href: "/hire-ai-developer" },
   { label: "Industries", type: "route", href: "/industries" },
   { label: "Portfolio", type: "route", href: "/portfolio" },
   { label: "About Us", type: "route", href: "/about" },
@@ -101,12 +101,19 @@ export default function Navbar() {
       style={
         scrolled
           ? {
-            backgroundColor: "rgba(255,255,255,0.95)",
-            backdropFilter: "blur(12px)",
-            borderBottom: "1px solid rgba(0,196,154,0.18)",
-            boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
-          }
-          : { backgroundColor: "transparent" }
+              backgroundColor: "rgba(255,255,255,0.96)",
+              backdropFilter: "blur(14px)",
+              WebkitBackdropFilter: "blur(14px)",
+              borderBottom: "1px solid rgba(15,23,42,0.10)",
+              boxShadow: "0 8px 24px rgba(15,23,42,0.10)",
+            }
+          : {
+              backgroundColor: "rgba(255,255,255,0.88)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              borderBottom: "1px solid rgba(15,23,42,0.08)",
+              boxShadow: "0 4px 18px rgba(15,23,42,0.07)",
+            }
       }
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -115,7 +122,7 @@ export default function Navbar() {
             <img
               src="/assets/images/tech2globe-logo.png"
               alt="logo"
-              className="h-8 sm:h-10"
+              className="h-10 sm:h-12"
             />
           </button>
 

@@ -4,9 +4,11 @@
 
 @layer base {
   :root {
-    --font-display: "General Sans", sans-serif;
-    --font-body: "DM Sans", sans-serif;
+    --font-display: "Poppins", sans-serif;
+    --font-body: "Poppins", sans-serif;
     --font-mono: "Geist Mono", monospace;
+    --section-padding-y: clamp(2.5rem, 5vw, 4rem);
+    --section-padding-y-tight: clamp(2rem, 4vw, 3rem);
     --radius: 0.625rem;
 
     /* ── Tech 2Globe AI — white/light design tokens (hex, no OKLCH) ── */
@@ -102,7 +104,7 @@
   }
 
   html,
-  body,
+body,
   #root {
     background-color: #ffffff;
     color: #1a1a2e;
@@ -115,6 +117,57 @@
     -moz-osx-font-smoothing: grayscale;
     color: #1a1a2e;
     background-color: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 600 !important;
+  }
+
+  main section {
+    padding-top: var(--section-padding-y) !important;
+    padding-bottom: var(--section-padding-y) !important;
+  }
+
+  main section:first-of-type,
+  main section[id="hero"] {
+    padding-top: clamp(4.5rem, 8vw, 6rem) !important;
+    padding-bottom: clamp(3rem, 6vw, 4.5rem) !important;
+  }
+
+  main section>div[style*="padding"] {
+    padding-top: var(--section-padding-y) !important;
+    padding-bottom: var(--section-padding-y) !important;
+  }
+
+  main section>[class*="py-16"],
+  main section>[class*="py-20"],
+  main section>[class*="py-24"] {
+    padding-top: var(--section-padding-y) !important;
+    padding-bottom: var(--section-padding-y) !important;
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --section-padding-y: clamp(2rem, 8vw, 3rem);
+      --section-padding-y-tight: clamp(1.75rem, 7vw, 2.5rem);
+    }
+
+    main section {
+      padding-top: var(--section-padding-y) !important;
+      padding-bottom: var(--section-padding-y) !important;
+    }
+
+    main section:first-of-type,
+    main section[id="hero"] {
+      padding-top: clamp(4rem, 16vw, 5rem) !important;
+      padding-bottom: clamp(2.25rem, 9vw, 3rem) !important;
+    }
   }
 
   /* Ensure nothing starts invisible at the container level */
@@ -141,20 +194,6 @@
 @layer utilities {
 
   /* Typography */
-  @font-face {
-    font-family: "General Sans";
-    src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "DM Sans";
-    src: url("/assets/fonts/DMSans.woff2") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-
   @font-face {
     font-family: "Geist Mono";
     src: url("/assets/fonts/GeistMono.woff2") format("woff2");
@@ -492,6 +531,6 @@
 main h1 {
   font-size: 3.75rem;
   line-height: 1;
-  font-weight: 700 !important;
-  font-family: "General Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-family: "Poppins", sans-serif !important;
 }

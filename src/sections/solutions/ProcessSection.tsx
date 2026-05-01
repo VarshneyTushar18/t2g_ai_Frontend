@@ -12,7 +12,7 @@ export default function ProcessSection({ data }: Props) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <h2
             className="text-4xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)", color: "#1a1a2e" }}
@@ -89,7 +89,7 @@ export default function ProcessSection({ data }: Props) {
             }}
           />
 
-          <div className="space-y-10">
+          <div className="space-y-6 sm:space-y-8">
             {data.steps.map((step, i) => (
               <div
                 key={step.number}
