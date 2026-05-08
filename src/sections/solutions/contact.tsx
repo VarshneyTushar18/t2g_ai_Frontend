@@ -203,7 +203,7 @@ function validate(
   if (!data.email.trim()) errs.email = "Email is required.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
     errs.email = "Please enter a valid email.";
-  if (!data.service) errs.service = "Please select a service.";
+  // if (!data.service) errs.service = "Please select a service.";
   if (!data.message.trim()) errs.message = "Message is required.";
   return errs;
 }
