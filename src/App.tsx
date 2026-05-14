@@ -24,6 +24,7 @@ import Solutions from "./sections/solutions/index";
 import SolutionDetails from "./sections/solutionDetails";
 import ContactPage from "./sections/solutions/contact";
 import PortfolioPage from "./sections/solutions/PortfolioPage";
+import ThankYouPage from "./sections/solutions/ThankYouPage";
 import { HireLovablePage } from "./sections/solutions/HireLovablePage";
 import { HireOpenAIPage } from "./sections/solutions/HireOpenAIPage";
 import HireCaffeineDeveloperPage from "./sections/HireCaffeineDeveloperPage";
@@ -109,6 +110,7 @@ export default function App() {
 
           <Route path="/solutions/:slug" element={<SolutionDetails />} />
           <Route path="/ai-expert" element={<ContactPage />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/industries" element={<IndustriesPage />} />
           <Route path="/about" element={<AboutUsPage />} />

@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const ACCENT = "#7c3aed";
@@ -676,7 +676,6 @@ function ContactForm() {
 // ── Main Page ──────────────────────────────────────────────────────────────
 
 export function HireUsPage() {
-  const navigate = useNavigate();
   const scrollToContact = () => {
     const el = document.querySelector("#contact-form");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -768,13 +767,15 @@ export function HireUsPage() {
               className="flex flex-col sm:flex-row gap-3 justify-start"
             >
               <Button
+                asChild
                 className="px-8 py-3 text-base h-auto font-semibold text-white rounded-md transition-smooth active:scale-95"
                 style={{ background: ACCENT }}
-                onClick={() => navigate("/hire-us")}
                 data-ocid="hero.primary_button"
               >
-                Hire an AI Developer
-                <ChevronRight className="w-4 h-4 ml-1" />
+                <Link to="/hire-ai-developer">
+                  Hire an AI Developer
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </Link>
               </Button>
               <Button
                 variant="outline"
