@@ -15,6 +15,19 @@ process.env.STORAGE_GATEWAY_URL =
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const apiProxyTarget = env.VITE_API_PROXY_TARGET?.trim() ?? "";
+  const apiUrl = env.VITE_API_URL?.trim() ?? "";
+
+  if (mode === "production") {
+    if (!apiUrl) {
+      console.warn(
+        "\n[vite] Production build: VITE_API_URL is not set. Contact form will request same-origin `/api/contact` (set `src/frontend/.env.production` or CI env — see `.env.production.example`).\n",
+      );
+    } else if (/\blocalhost\b|127\.0\.0\.1/i.test(apiUrl)) {
+      console.warn(
+        "\n[vite] Production build: VITE_API_URL points at localhost — that will fail for real users. Use your public API origin.\n",
+      );
+    }
+  }
 
   return {
     logLevel: "error",

@@ -1,8 +1,12 @@
-/** Base URL for the lead API (no trailing slash). Set `VITE_API_URL` in `.env`; in dev leave empty to use same-origin `/api` (Vite proxy). */
+/** Base URL for the lead API (no trailing slash). Set `VITE_API_URL` at build time for production when the API is not same-origin. */
 function apiBaseUrl(): string {
-  const fromEnv = import.meta.env.VITE_API_URL?.trim();
-  if (fromEnv) {
-    return fromEnv.replace(/\/$/, "");
+  let raw = import.meta.env.VITE_API_URL?.trim() ?? "";
+  // Production builds must not use localhost — that targets each visitor's machine, not your server.
+  if (!import.meta.env.DEV && raw && /\blocalhost\b|127\.0\.0\.1/i.test(raw)) {
+    raw = "";
+  }
+  if (raw) {
+    return raw.replace(/\/$/, "");
   }
   if (import.meta.env.DEV) {
     return "";
