@@ -14,8 +14,7 @@ process.env.STORAGE_GATEWAY_URL =
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const apiProxyTarget =
-    env.VITE_API_PROXY_TARGET?.trim() || "http://127.0.0.1:5001";
+  const apiProxyTarget = env.VITE_API_PROXY_TARGET?.trim() ?? "";
 
   return {
     logLevel: "error",
@@ -35,12 +34,14 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      proxy: {
-        "/api": {
-          target: apiProxyTarget,
-          changeOrigin: true,
-        },
-      },
+      proxy: apiProxyTarget
+        ? {
+            "/api": {
+              target: apiProxyTarget,
+              changeOrigin: true,
+            },
+          }
+        : {},
     },
     plugins: [
       environment("all", { prefix: "CANISTER_" }),

@@ -1,14 +1,13 @@
-/** Base URL for the Node lead API (no trailing slash). */
+/** Base URL for the lead API (no trailing slash). Set `VITE_API_URL` in `.env`; in dev leave empty to use same-origin `/api` (Vite proxy). */
 function apiBaseUrl(): string {
   const fromEnv = import.meta.env.VITE_API_URL?.trim();
   if (fromEnv) {
     return fromEnv.replace(/\/$/, "");
   }
-  // Dev: same-origin `/api/...` is proxied by Vite to the backend (vite.config.js).
   if (import.meta.env.DEV) {
     return "";
   }
-  return "http://localhost:5001";
+  return "";
 }
 
 export async function submitContactForm(form: Record<string, unknown>) {
