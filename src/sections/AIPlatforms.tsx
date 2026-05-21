@@ -1,4 +1,6 @@
+import { platformHref } from "@/data/hireDeveloperNav";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import {
   useScrollAnimation,
   useStaggeredScrollAnimation,
@@ -11,6 +13,7 @@ interface Platform {
   gradient: string;
   tagColor: string;
   icon: string;
+  href: string;
 }
 
 const platforms: Platform[] = [
@@ -22,6 +25,7 @@ const platforms: Platform[] = [
     gradient: "linear-gradient(90deg, #00c49a, #0ea5e9)",
     tagColor: "#007a64",
     icon: "/assets/images/lovable-logo.png",
+    href: platformHref("Lovable"),
   },
   {
     tag: "Autonomous Agents",
@@ -31,6 +35,7 @@ const platforms: Platform[] = [
     gradient: "linear-gradient(90deg, #7c3aed, #ec4899)",
     tagColor: "#6d28d9",
     icon: "/assets/images/emergent-logo.png",
+    href: platformHref("Emergent"),
   },
   {
     tag: "Rapid Prototyping",
@@ -40,34 +45,36 @@ const platforms: Platform[] = [
     gradient: "linear-gradient(90deg, #d97706, #dc2626)",
     tagColor: "#b45309",
     icon: "/assets/images/caffeine-logo.png",
+    href: platformHref("Caffeine"),
   },
-  {
-    tag: "Generative AI Platforms",
-    name: "GenW.AI",
-    description:
-      "Generative AI-powered websites, content tools, and creative platforms for next-gen businesses.",
-    gradient: "linear-gradient(90deg, #059669, #00c49a)",
-    tagColor: "#047857",
-    icon: "/assets/images/genw-ai-logo.svg",
-  },
-  {
-    tag: "Enterprise UI Systems",
-    name: "Horizon",
-    description:
-      "Enterprise-grade UI systems and design-to-code pipelines for large-scale digital products.",
-    gradient: "linear-gradient(90deg, #4f46e5, #7c3aed)",
-    tagColor: "#4338ca",
-    icon: "/assets/images/horizon-logo.jpg",
-  },
-  {
-    tag: "Design to Live App",
-    name: "Framer AI",
-    description:
-      "Figma-to-live-app conversion with AI layout intelligence — pixel-perfect every time.",
-    gradient: "linear-gradient(90deg, #db2777, #d97706)",
-    tagColor: "#be185d",
-    icon: "/assets/images/framer-ai-logo.png",
-  },
+  // {
+  //   tag: "Generative AI Platforms",
+  //   name: "GenW.AI",
+  //   description:
+  //     "Generative AI-powered websites, content tools, and creative platforms for next-gen businesses.",
+  //   gradient: "linear-gradient(90deg, #059669, #00c49a)",
+  //   tagColor: "#047857",
+  //   icon: "/assets/images/genw-ai-logo.svg",
+  // },
+  // {
+  //   tag: "Enterprise UI Systems",
+  //   name: "Horizon",
+  //   description:
+  //     "Enterprise-grade UI systems and design-to-code pipelines for large-scale digital products.",
+  //   gradient: "linear-gradient(90deg, #4f46e5, #7c3aed)",
+  //   tagColor: "#4338ca",
+  //   icon: "/assets/images/horizon-logo.jpg",
+  // },
+  // {
+  //   tag: "Design to Live App",
+  //   name: "Framer AI",
+  //   description:
+  //     "Figma-to-live-app conversion with AI layout intelligence — pixel-perfect every time.",
+  //   gradient: "linear-gradient(90deg, #db2777, #d97706)",
+  //   tagColor: "#be185d",
+  //   icon: "/assets/images/framer-ai-logo.png",
+  //   href: platformHref("Framer AI"),
+  // },
   {
     tag: "Open Source AI Coding",
     name: "OpenCode AI",
@@ -76,6 +83,7 @@ const platforms: Platform[] = [
     gradient: "linear-gradient(90deg, #00c49a, #7c3aed)",
     tagColor: "#007a64",
     icon: "/assets/images/opencode-logo.png",
+    href: platformHref("OpenCode AI"),
   },
 ];
 
@@ -150,8 +158,9 @@ export default function AIPlatforms() {
 
 function PlatformCard({ platform }: { platform: Platform }) {
   return (
-    <div
-      className="group relative rounded-xl overflow-hidden h-full"
+    <Link
+      to={platform.href}
+      className="group relative block h-full rounded-xl overflow-hidden cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4f8ef7] focus-visible:ring-offset-2"
       style={{
         background: "rgba(255, 255, 255, 0.85)",
         backdropFilter: "blur(12px)",
@@ -161,6 +170,7 @@ function PlatformCard({ platform }: { platform: Platform }) {
         transition:
           "border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
       }}
+      aria-label={`View ${platform.name} — ${platform.tag}`}
       onMouseEnter={(e) => {
         const el = e.currentTarget;
         el.style.borderColor = "rgba(0, 196, 154, 0.45)";
@@ -226,6 +236,6 @@ function PlatformCard({ platform }: { platform: Platform }) {
           {platform.description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

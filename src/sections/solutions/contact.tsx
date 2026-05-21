@@ -728,15 +728,616 @@ export default function ContactUsPage() {
       <Navbar />
 
       <main className="flex-1 pt-16">
+        {/* ── CONTACT FORM (top) ───────────────────────────── */}
+        <section
+          id="contact-form"
+          className="relative overflow-hidden py-12 sm:py-16 px-4"
+          style={{
+            background:
+              "linear-gradient(160deg, #ffffff 0%, #f5f3ff 50%, #f0fdff 100%)",
+          }}
+          data-ocid="contact-form-section"
+        >
+          {/* Background orbs */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div
+              className="absolute rounded-full"
+              style={{
+                top: "10%",
+                left: "-8%",
+                width: 450,
+                height: 450,
+                background:
+                  "radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%)",
+                filter: "blur(60px)",
+              }}
+            />
+            <div
+              className="absolute rounded-full"
+              style={{
+                bottom: "5%",
+                right: "-5%",
+                width: 400,
+                height: 400,
+                background:
+                  "radial-gradient(circle, rgba(124,92,191,0.08) 0%, transparent 70%)",
+                filter: "blur(60px)",
+              }}
+            />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section header */}
+            <motion.div
+              className="text-center mb-8 sm:mb-10"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
+            >
+              <span
+                className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
+                style={{
+                  background: "rgba(79,142,247,0.08)",
+                  border: "1px solid rgba(79,142,247,0.22)",
+                  color: "#4f8ef7",
+                }}
+              >
+                Start a Conversation
+              </span>
+              <h2
+                className="text-4xl lg:text-5xl font-extrabold mb-4"
+                style={{
+                  color: "#1a1a2e",
+                  letterSpacing: "-0.02em",
+                  fontFamily: "var(--font-display)",
+                }}
+              >
+                Tell Us About Your{" "}
+                <span
+                  className="gradient-text-clip"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #4f8ef7 0%, #7c5cbf 55%, #06b6d4 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  AI Project
+                </span>
+              </h2>
+              <p
+                className="max-w-xl mx-auto text-lg"
+                style={{ color: "#6b7280" }}
+              >
+                Fill in the form and a senior AI specialist will reach out
+                within 24 hours with a tailored consultation.
+              </p>
+            </motion.div>
+
+            {/* Form first on small screens; info left + form right on lg */}
+            <div className="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start">
+              {/* Left info panel */}
+              <motion.div
+                className="order-2 lg:order-1 lg:col-span-2 flex flex-col gap-6"
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: 0.1 }}
+              >
+                <div
+                  className="rounded-2xl p-8"
+                  style={{
+                    background: "rgba(255,255,255,0.9)",
+                    border: "1px solid rgba(79,142,247,0.12)",
+                    boxShadow: "0 4px 24px rgba(79,142,247,0.08)",
+                    backdropFilter: "blur(12px)",
+                  }}
+                >
+                  <h3
+                    className="text-2xl font-bold mb-3"
+                    style={{
+                      color: "#1a1a2e",
+                      fontFamily: "var(--font-display)",
+                    }}
+                  >
+                    We'd love to hear from you
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed mb-6"
+                    style={{ color: "#6b7280" }}
+                  >
+                    Whether you're exploring AI solutions, ready to kick off a
+                    project, or just want to understand what's possible — our
+                    engineers are here to help you build smarter.
+                  </p>
+
+{/*
+                  <div className="flex flex-col gap-3">
+                    {CONTACT_DETAILS.map(
+                      ({
+                        icon: Icon,
+                        label,
+                        value,
+                        href,
+                        color,
+                        bg,
+                        border,
+                      }) => (
+                        <a
+                          key={label}
+                          href={href}
+                          className="flex items-center gap-4 rounded-xl p-4 transition-smooth hover:scale-[1.02]"
+                          style={{
+                            background: bg,
+                            border: `1px solid ${border}`,
+                          }}
+                          data-ocid={`form-contact-${label.toLowerCase().replace(/\s+/g, "-")}`}
+                        >
+                          <span
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+                            style={{
+                              background: "rgba(255,255,255,0.8)",
+                              border: `1px solid ${border}`,
+                            }}
+                          >
+                            <Icon size={17} color={color} />
+                          </span>
+                          <div className="min-w-0">
+                            <p
+                              className="text-xs font-semibold uppercase tracking-widest"
+                              style={{ color }}
+                            >
+                              {label}
+                            </p>
+                            <p
+                              className="text-sm font-medium truncate"
+                              style={{ color: "#1a1a2e" }}
+                            >
+                              {value}
+                            </p>
+                          </div>
+                        </a>
+                      ),
+                    )}
+                  </div>
+*/}
+                </div>
+
+                {/* Why work with us */}
+                <div
+                  className="rounded-2xl p-6"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(79,142,247,0.06) 0%, rgba(124,92,191,0.06) 100%)",
+                    border: "1px solid rgba(79,142,247,0.14)",
+                  }}
+                >
+                  <p
+                    className="text-xs font-semibold uppercase tracking-widest mb-4"
+                    style={{ color: "#4f8ef7" }}
+                  >
+                    Why work with us?
+                  </p>
+                  {[
+                    "Senior AI engineers on every project",
+                    "Production-ready code, not prototypes",
+                    "Full IP & code ownership guaranteed",
+                    "Enterprise security & compliance built-in",
+                  ].map((point) => (
+                    <div
+                      key={point}
+                      className="flex items-start gap-3 mb-3 last:mb-0"
+                    >
+                      <CheckCircle2
+                        size={16}
+                        color="#10b981"
+                        className="mt-0.5 shrink-0"
+                      />
+                      <p className="text-sm" style={{ color: "#374151" }}>
+                        {point}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Awards mini card */}
+                <div
+                  className="rounded-2xl p-5 flex items-center gap-4"
+                  style={{
+                    background: "rgba(255,255,255,0.9)",
+                    border: "1px solid rgba(250,204,21,0.25)",
+                    boxShadow: "0 2px 12px rgba(250,204,21,0.08)",
+                  }}
+                >
+                  <Award size={28} color="#f59e0b" className="shrink-0" />
+                  <div>
+                    <p
+                      className="text-sm font-bold"
+                      style={{ color: "#1a1a2e" }}
+                    >
+                      #1 AI Development Partner
+                    </p>
+                    <p className="text-xs" style={{ color: "#6b7280" }}>
+                      Recognized by 50+ enterprise clients globally
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Form (top on mobile/tablet) */}
+              <motion.div
+                className="order-1 lg:order-2 lg:col-span-3"
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: 0.15 }}
+              >
+                {submitted ? (
+                  <div
+                    className="rounded-2xl p-12 flex flex-col items-center text-center gap-6"
+                    style={{
+                      background: "rgba(255,255,255,0.95)",
+                      border: "1px solid rgba(16,185,129,0.25)",
+                      boxShadow: "0 8px 32px rgba(16,185,129,0.08)",
+                    }}
+                    data-ocid="contact-success_state"
+                  >
+                    <div
+                      className="w-20 h-20 rounded-full flex items-center justify-center"
+                      style={{
+                        background: "rgba(16,185,129,0.1)",
+                        border: "2px solid rgba(16,185,129,0.3)",
+                      }}
+                    >
+                      <CheckCircle2 size={40} color="#10b981" />
+                    </div>
+                    <div>
+                      <h3
+                        className="text-2xl font-bold mb-2"
+                        style={{ color: "#1a1a2e" }}
+                      >
+                        Message Received!
+                      </h3>
+                      <p style={{ color: "#6b7280" }}>
+                        Thank you for reaching out. A senior AI specialist will
+                        contact you within 24 hours with a tailored response.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setSubmitted(false)}
+                      className="px-6 py-3 rounded-xl text-sm font-semibold text-white transition-smooth hover:opacity-90"
+                      style={{
+                        background: "linear-gradient(135deg, #4f8ef7, #7c5cbf)",
+                      }}
+                      data-ocid="contact-send-another-button"
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={handleSubmit}
+                    noValidate
+                    className="rounded-2xl p-8 lg:p-10"
+                    style={{
+                      background: "rgba(255,255,255,0.95)",
+                      backdropFilter: "blur(12px)",
+                      border: "1px solid rgba(79,142,247,0.15)",
+                      boxShadow:
+                        "0 8px 40px rgba(79,142,247,0.08), 0 2px 8px rgba(0,0,0,0.04)",
+                    }}
+                    data-ocid="contact-form"
+                  >
+                    {/* Name + Email */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                      <div className="flex flex-col gap-1.5">
+                        <Label
+                          htmlFor="cu-name"
+                          className="text-sm font-medium"
+                          style={{ color: "#374151" }}
+                        >
+                          Full Name <span style={{ color: "#4f8ef7" }}>*</span>
+                        </Label>
+                        <Input
+                          id="cu-name"
+                          type="text"
+                          placeholder="Jane Smith"
+                          value={form.name}
+                          onChange={(e) => handleChange("name", e.target.value)}
+                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11"
+                          aria-invalid={!!errors.name}
+                          data-ocid="contact.input"
+                        />
+                        {errors.name && (
+                          <p
+                            className="text-xs text-red-500"
+                            data-ocid="contact.name.field_error"
+                          >
+                            {errors.name}
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <Label
+                          htmlFor="cu-email"
+                          className="text-sm font-medium"
+                          style={{ color: "#374151" }}
+                        >
+                          Work Email <span style={{ color: "#4f8ef7" }}>*</span>
+                        </Label>
+                        <Input
+                          id="cu-email"
+                          type="email"
+                          placeholder="jane@company.com"
+                          value={form.email}
+                          onChange={(e) =>
+                            handleChange("email", e.target.value)
+                          }
+                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11"
+                          aria-invalid={!!errors.email}
+                          data-ocid="contact-input-email"
+                        />
+                        {errors.email && (
+                          <p
+                            className="text-xs text-red-500"
+                            data-ocid="contact.email.field_error"
+                          >
+                            {errors.email}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Country + AI Product (country first so dial code fills phone) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5 items-start">
+                      <div className="flex flex-col gap-1.5">
+                        <Label
+                          htmlFor="cu-country"
+                          className="text-sm font-medium"
+                          style={{ color: "#374151" }}
+                        >
+                          Country <span style={{ color: "#4f8ef7" }}>*</span>
+                        </Label>
+                        <Select
+                          value={form.country}
+                          onValueChange={handleCountryChange}
+                        >
+                          <SelectTrigger
+                            id="cu-country"
+                            className="border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] focus:ring-[#4f8ef7] data-[placeholder]:text-[#9ca3af] h-11"
+                            aria-invalid={!!errors.country}
+                            data-ocid="contact-select-country"
+                          >
+                            <SelectValue placeholder="Select your country…" />
+                          </SelectTrigger>
+                          <SelectContent className="border-[rgba(0,0,0,0.1)] bg-white text-[#1a1a2e]">
+                            {COUNTRIES.map((country) => (
+                              <SelectItem
+                                key={country}
+                                value={country}
+                                className="focus:bg-[rgba(79,142,247,0.08)] focus:text-[#1a1a2e]"
+                              >
+                                {country}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        {errors.country && (
+                          <p
+                            className="text-xs text-red-500"
+                            data-ocid="contact.country.field_error"
+                          >
+                            {errors.country}
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="flex flex-col gap-1.5">
+                        <Label
+                          htmlFor="cu-ai-product"
+                          className="text-sm font-medium"
+                          style={{ color: "#374151" }}
+                        >
+                          AI Product{" "}
+                          <span
+                            className="text-xs"
+                            style={{ color: "#9ca3af" }}
+                          >
+                            (optional)
+                          </span>
+                        </Label>
+                        <Select
+                          value={form.aiProduct}
+                          onValueChange={(v) => handleChange("aiProduct", v)}
+                        >
+                          <SelectTrigger
+                            id="cu-ai-product"
+                            className="border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] focus:ring-[#4f8ef7] data-[placeholder]:text-[#9ca3af] h-11"
+                            data-ocid="contact-select-ai-product"
+                          >
+                            <SelectValue placeholder="Select AI product…" />
+                          </SelectTrigger>
+                          <SelectContent className="border-[rgba(0,0,0,0.1)] bg-white text-[#1a1a2e]">
+                            {AI_PRODUCT_OPTIONS.map((opt) => (
+                              <SelectItem
+                                key={opt}
+                                value={opt}
+                                className="focus:bg-[rgba(79,142,247,0.08)] focus:text-[#1a1a2e]"
+                              >
+                                {opt}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    {/* Phone + Company */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5 items-start">
+                      <div className="flex flex-col gap-1.5">
+                        <Label
+                          htmlFor="cu-phone"
+                          className="text-sm font-medium"
+                          style={{ color: "#374151" }}
+                        >
+                          Phone <span style={{ color: "#4f8ef7" }}>*</span>
+                        </Label>
+                        <Input
+                          id="cu-phone"
+                          type="tel"
+                          inputMode="tel"
+                          autoComplete="tel"
+                          placeholder={
+                            form.country
+                              ? `${selectedDialCode} 771234567`
+                              : "Select country first for country code"
+                          }
+                          value={form.phone}
+                          onChange={(e) =>
+                            handleChange("phone", e.target.value)
+                          }
+                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11 tabular-nums tracking-wide"
+                          aria-invalid={!!errors.phone}
+                          data-ocid="contact-input-phone"
+                        />
+                        {errors.phone && (
+                          <p
+                            className="text-xs text-red-500"
+                            data-ocid="contact.phone.field_error"
+                          >
+                            {errors.phone}
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <Label
+                          htmlFor="cu-company"
+                          className="text-sm font-medium"
+                          style={{ color: "#374151" }}
+                        >
+                          Company Name{" "}
+                          <span style={{ color: "#4f8ef7" }}>*</span>
+                        </Label>
+                        <Input
+                          id="cu-company"
+                          type="text"
+                          placeholder="Acme Corp"
+                          value={form.company}
+                          onChange={(e) =>
+                            handleChange("company", e.target.value)
+                          }
+                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11"
+                          aria-invalid={!!errors.company}
+                          data-ocid="contact-input-company"
+                        />
+                        {errors.company && (
+                          <p
+                            className="text-xs text-red-500"
+                            data-ocid="contact.company.field_error"
+                          >
+                            {errors.company}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Message */}
+                    <div className="flex flex-col gap-1.5 mb-7">
+                      <Label
+                        htmlFor="cu-message"
+                        className="text-sm font-medium"
+                        style={{ color: "#374151" }}
+                      >
+                        Your Message <span style={{ color: "#4f8ef7" }}>*</span>
+                      </Label>
+                      <Textarea
+                        id="cu-message"
+                        rows={5}
+                        placeholder="Tell us about your project goals, timeline, and any specific AI requirements…"
+                        value={form.message}
+                        onChange={(e) =>
+                          handleChange("message", e.target.value)
+                        }
+                        className="form-field-glow resize-none border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7]"
+                        aria-invalid={!!errors.message}
+                        data-ocid="contact-textarea-message"
+                      />
+                      {errors.message && (
+                        <p
+                          className="text-xs text-red-500"
+                          data-ocid="contact.message.field_error"
+                        >
+                          {errors.message}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Submit */}
+                    <Button
+                      type="submit"
+                      disabled={submitting}
+                      className="w-full gap-2 h-13 py-4 text-base font-semibold text-white transition-smooth hover:opacity-90 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
+                      style={{
+                        background: "linear-gradient(135deg, #4f8ef7, #7c5cbf)",
+                        border: "none",
+                        boxShadow: "0 4px 20px rgba(79,142,247,0.3)",
+                      }}
+                      data-ocid="contact.submit_button"
+                    >
+                      {submitting ? (
+                        <>
+                          <svg
+                            className="h-5 w-5 animate-spin"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            />
+                          </svg>
+                          Sending…
+                        </>
+                      ) : (
+                        <>
+                          <Send size={17} />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                    <p
+                      className="mt-4 text-center text-xs"
+                      style={{ color: "#9ca3af" }}
+                    >
+                      We typically respond within 24 hours. No spam, ever.
+                    </p>
+                  </form>
+                )}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* ── HERO ─────────────────────────────────────────── */}
         <section
-          className="relative overflow-hidden"
+          className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
           style={{
             background:
               "linear-gradient(135deg, #f0f7ff 0%, #faf5ff 50%, #f0fdff 100%)",
-            minHeight: "88vh",
-            display: "flex",
-            alignItems: "center",
           }}
           data-ocid="contact-hero-section"
         >
@@ -1155,604 +1756,6 @@ export default function ContactUsPage() {
                   </div>
                 </motion.div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── CONTACT FORM + INFO ───────────────────────────── */}
-        <section
-          id="contact-form"
-          className="relative overflow-hidden py-24 px-4"
-          style={{
-            background:
-              "linear-gradient(160deg, #ffffff 0%, #f5f3ff 50%, #f0fdff 100%)",
-          }}
-          data-ocid="contact-form-section"
-        >
-          {/* Background orbs */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div
-              className="absolute rounded-full"
-              style={{
-                top: "10%",
-                left: "-8%",
-                width: 450,
-                height: 450,
-                background:
-                  "radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%)",
-                filter: "blur(60px)",
-              }}
-            />
-            <div
-              className="absolute rounded-full"
-              style={{
-                bottom: "5%",
-                right: "-5%",
-                width: 400,
-                height: 400,
-                background:
-                  "radial-gradient(circle, rgba(124,92,191,0.08) 0%, transparent 70%)",
-                filter: "blur(60px)",
-              }}
-            />
-          </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto">
-            {/* Section header */}
-            <motion.div
-              className="text-center mb-8 sm:mb-10"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55 }}
-            >
-              <span
-                className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
-                style={{
-                  background: "rgba(79,142,247,0.08)",
-                  border: "1px solid rgba(79,142,247,0.22)",
-                  color: "#4f8ef7",
-                }}
-              >
-                Start a Conversation
-              </span>
-              <h2
-                className="text-4xl lg:text-5xl font-extrabold mb-4"
-                style={{
-                  color: "#1a1a2e",
-                  letterSpacing: "-0.02em",
-                  fontFamily: "var(--font-display)",
-                }}
-              >
-                Tell Us About Your{" "}
-                <span
-                  className="gradient-text-clip"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #4f8ef7 0%, #7c5cbf 55%, #06b6d4 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  AI Project
-                </span>
-              </h2>
-              <p
-                className="max-w-xl mx-auto text-lg"
-                style={{ color: "#6b7280" }}
-              >
-                Fill in the form and a senior AI specialist will reach out
-                within 24 hours with a tailored consultation.
-              </p>
-            </motion.div>
-
-            {/* Two column: info left, form right */}
-            <div className="grid lg:grid-cols-5 gap-12 items-start">
-              {/* Left info panel */}
-              <motion.div
-                className="lg:col-span-2 flex flex-col gap-6"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: 0.1 }}
-              >
-                <div
-                  className="rounded-2xl p-8"
-                  style={{
-                    background: "rgba(255,255,255,0.9)",
-                    border: "1px solid rgba(79,142,247,0.12)",
-                    boxShadow: "0 4px 24px rgba(79,142,247,0.08)",
-                    backdropFilter: "blur(12px)",
-                  }}
-                >
-                  <h3
-                    className="text-2xl font-bold mb-3"
-                    style={{
-                      color: "#1a1a2e",
-                      fontFamily: "var(--font-display)",
-                    }}
-                  >
-                    We'd love to hear from you
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed mb-6"
-                    style={{ color: "#6b7280" }}
-                  >
-                    Whether you're exploring AI solutions, ready to kick off a
-                    project, or just want to understand what's possible — our
-                    engineers are here to help you build smarter.
-                  </p>
-
-                  <div className="flex flex-col gap-3">
-                    {CONTACT_DETAILS.map(
-                      ({
-                        icon: Icon,
-                        label,
-                        value,
-                        href,
-                        color,
-                        bg,
-                        border,
-                      }) => (
-                        <a
-                          key={label}
-                          href={href}
-                          className="flex items-center gap-4 rounded-xl p-4 transition-smooth hover:scale-[1.02]"
-                          style={{
-                            background: bg,
-                            border: `1px solid ${border}`,
-                          }}
-                          data-ocid={`form-contact-${label.toLowerCase().replace(/\s+/g, "-")}`}
-                        >
-                          <span
-                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-                            style={{
-                              background: "rgba(255,255,255,0.8)",
-                              border: `1px solid ${border}`,
-                            }}
-                          >
-                            <Icon size={17} color={color} />
-                          </span>
-                          <div className="min-w-0">
-                            <p
-                              className="text-xs font-semibold uppercase tracking-widest"
-                              style={{ color }}
-                            >
-                              {label}
-                            </p>
-                            <p
-                              className="text-sm font-medium truncate"
-                              style={{ color: "#1a1a2e" }}
-                            >
-                              {value}
-                            </p>
-                          </div>
-                        </a>
-                      ),
-                    )}
-                  </div>
-                </div>
-
-                {/* Why work with us */}
-                <div
-                  className="rounded-2xl p-6"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(79,142,247,0.06) 0%, rgba(124,92,191,0.06) 100%)",
-                    border: "1px solid rgba(79,142,247,0.14)",
-                  }}
-                >
-                  <p
-                    className="text-xs font-semibold uppercase tracking-widest mb-4"
-                    style={{ color: "#4f8ef7" }}
-                  >
-                    Why work with us?
-                  </p>
-                  {[
-                    "Senior AI engineers on every project",
-                    "Production-ready code, not prototypes",
-                    "Full IP & code ownership guaranteed",
-                    "Enterprise security & compliance built-in",
-                  ].map((point) => (
-                    <div
-                      key={point}
-                      className="flex items-start gap-3 mb-3 last:mb-0"
-                    >
-                      <CheckCircle2
-                        size={16}
-                        color="#10b981"
-                        className="mt-0.5 shrink-0"
-                      />
-                      <p className="text-sm" style={{ color: "#374151" }}>
-                        {point}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Awards mini card */}
-                <div
-                  className="rounded-2xl p-5 flex items-center gap-4"
-                  style={{
-                    background: "rgba(255,255,255,0.9)",
-                    border: "1px solid rgba(250,204,21,0.25)",
-                    boxShadow: "0 2px 12px rgba(250,204,21,0.08)",
-                  }}
-                >
-                  <Award size={28} color="#f59e0b" className="shrink-0" />
-                  <div>
-                    <p
-                      className="text-sm font-bold"
-                      style={{ color: "#1a1a2e" }}
-                    >
-                      #1 AI Development Partner
-                    </p>
-                    <p className="text-xs" style={{ color: "#6b7280" }}>
-                      Recognized by 50+ enterprise clients globally
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Right: Form */}
-              <motion.div
-                className="lg:col-span-3"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: 0.15 }}
-              >
-                {submitted ? (
-                  <div
-                    className="rounded-2xl p-12 flex flex-col items-center text-center gap-6"
-                    style={{
-                      background: "rgba(255,255,255,0.95)",
-                      border: "1px solid rgba(16,185,129,0.25)",
-                      boxShadow: "0 8px 32px rgba(16,185,129,0.08)",
-                    }}
-                    data-ocid="contact-success_state"
-                  >
-                    <div
-                      className="w-20 h-20 rounded-full flex items-center justify-center"
-                      style={{
-                        background: "rgba(16,185,129,0.1)",
-                        border: "2px solid rgba(16,185,129,0.3)",
-                      }}
-                    >
-                      <CheckCircle2 size={40} color="#10b981" />
-                    </div>
-                    <div>
-                      <h3
-                        className="text-2xl font-bold mb-2"
-                        style={{ color: "#1a1a2e" }}
-                      >
-                        Message Received!
-                      </h3>
-                      <p style={{ color: "#6b7280" }}>
-                        Thank you for reaching out. A senior AI specialist will
-                        contact you within 24 hours with a tailored response.
-                      </p>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => setSubmitted(false)}
-                      className="px-6 py-3 rounded-xl text-sm font-semibold text-white transition-smooth hover:opacity-90"
-                      style={{
-                        background: "linear-gradient(135deg, #4f8ef7, #7c5cbf)",
-                      }}
-                      data-ocid="contact-send-another-button"
-                    >
-                      Send Another Message
-                    </button>
-                  </div>
-                ) : (
-                  <form
-                    onSubmit={handleSubmit}
-                    noValidate
-                    className="rounded-2xl p-8 lg:p-10"
-                    style={{
-                      background: "rgba(255,255,255,0.95)",
-                      backdropFilter: "blur(12px)",
-                      border: "1px solid rgba(79,142,247,0.15)",
-                      boxShadow:
-                        "0 8px 40px rgba(79,142,247,0.08), 0 2px 8px rgba(0,0,0,0.04)",
-                    }}
-                    data-ocid="contact-form"
-                  >
-                    {/* Name + Email */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-                      <div className="flex flex-col gap-1.5">
-                        <Label
-                          htmlFor="cu-name"
-                          className="text-sm font-medium"
-                          style={{ color: "#374151" }}
-                        >
-                          Full Name <span style={{ color: "#4f8ef7" }}>*</span>
-                        </Label>
-                        <Input
-                          id="cu-name"
-                          type="text"
-                          placeholder="Jane Smith"
-                          value={form.name}
-                          onChange={(e) => handleChange("name", e.target.value)}
-                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11"
-                          aria-invalid={!!errors.name}
-                          data-ocid="contact.input"
-                        />
-                        {errors.name && (
-                          <p
-                            className="text-xs text-red-500"
-                            data-ocid="contact.name.field_error"
-                          >
-                            {errors.name}
-                          </p>
-                        )}
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <Label
-                          htmlFor="cu-email"
-                          className="text-sm font-medium"
-                          style={{ color: "#374151" }}
-                        >
-                          Work Email <span style={{ color: "#4f8ef7" }}>*</span>
-                        </Label>
-                        <Input
-                          id="cu-email"
-                          type="email"
-                          placeholder="jane@company.com"
-                          value={form.email}
-                          onChange={(e) =>
-                            handleChange("email", e.target.value)
-                          }
-                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11"
-                          aria-invalid={!!errors.email}
-                          data-ocid="contact-input-email"
-                        />
-                        {errors.email && (
-                          <p
-                            className="text-xs text-red-500"
-                            data-ocid="contact.email.field_error"
-                          >
-                            {errors.email}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Country + AI Product (country first so dial code fills phone) */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5 items-start">
-                      <div className="flex flex-col gap-1.5">
-                        <Label
-                          htmlFor="cu-country"
-                          className="text-sm font-medium"
-                          style={{ color: "#374151" }}
-                        >
-                          Country <span style={{ color: "#4f8ef7" }}>*</span>
-                        </Label>
-                        <Select
-                          value={form.country}
-                          onValueChange={handleCountryChange}
-                        >
-                          <SelectTrigger
-                            id="cu-country"
-                            className="border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] focus:ring-[#4f8ef7] data-[placeholder]:text-[#9ca3af] h-11"
-                            aria-invalid={!!errors.country}
-                            data-ocid="contact-select-country"
-                          >
-                            <SelectValue placeholder="Select your country…" />
-                          </SelectTrigger>
-                          <SelectContent className="border-[rgba(0,0,0,0.1)] bg-white text-[#1a1a2e]">
-                            {COUNTRIES.map((country) => (
-                              <SelectItem
-                                key={country}
-                                value={country}
-                                className="focus:bg-[rgba(79,142,247,0.08)] focus:text-[#1a1a2e]"
-                              >
-                                {country}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        {errors.country && (
-                          <p
-                            className="text-xs text-red-500"
-                            data-ocid="contact.country.field_error"
-                          >
-                            {errors.country}
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <Label
-                          htmlFor="cu-ai-product"
-                          className="text-sm font-medium"
-                          style={{ color: "#374151" }}
-                        >
-                          AI Product{" "}
-                          <span
-                            className="text-xs"
-                            style={{ color: "#9ca3af" }}
-                          >
-                            (optional)
-                          </span>
-                        </Label>
-                        <Select
-                          value={form.aiProduct}
-                          onValueChange={(v) => handleChange("aiProduct", v)}
-                        >
-                          <SelectTrigger
-                            id="cu-ai-product"
-                            className="border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] focus:ring-[#4f8ef7] data-[placeholder]:text-[#9ca3af] h-11"
-                            data-ocid="contact-select-ai-product"
-                          >
-                            <SelectValue placeholder="Select AI product…" />
-                          </SelectTrigger>
-                          <SelectContent className="border-[rgba(0,0,0,0.1)] bg-white text-[#1a1a2e]">
-                            {AI_PRODUCT_OPTIONS.map((opt) => (
-                              <SelectItem
-                                key={opt}
-                                value={opt}
-                                className="focus:bg-[rgba(79,142,247,0.08)] focus:text-[#1a1a2e]"
-                              >
-                                {opt}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    {/* Phone + Company */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5 items-start">
-                      <div className="flex flex-col gap-1.5">
-                        <Label
-                          htmlFor="cu-phone"
-                          className="text-sm font-medium"
-                          style={{ color: "#374151" }}
-                        >
-                          Phone{" "}
-                          <span
-                            className="text-xs"
-                            style={{ color: "#9ca3af" }}
-                          >
-                            (optional)
-                          </span>
-                        </Label>
-                        <Input
-                          id="cu-phone"
-                          type="tel"
-                          inputMode="tel"
-                          autoComplete="tel"
-                          placeholder={
-                            form.country
-                              ? `${selectedDialCode} 771234567`
-                              : "Select country first for country code"
-                          }
-                          value={form.phone}
-                          onChange={(e) =>
-                            handleChange("phone", e.target.value)
-                          }
-                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11 tabular-nums tracking-wide"
-                          aria-invalid={!!errors.phone}
-                          data-ocid="contact-input-phone"
-                        />
-                        {errors.phone && (
-                          <p
-                            className="text-xs text-red-500"
-                            data-ocid="contact.phone.field_error"
-                          >
-                            {errors.phone}
-                          </p>
-                        )}
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <Label
-                          htmlFor="cu-company"
-                          className="text-sm font-medium"
-                          style={{ color: "#374151" }}
-                        >
-                          Company Name
-                        </Label>
-                        <Input
-                          id="cu-company"
-                          type="text"
-                          placeholder="Acme Corp"
-                          value={form.company}
-                          onChange={(e) =>
-                            handleChange("company", e.target.value)
-                          }
-                          className="form-field-glow border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7] h-11"
-                          data-ocid="contact-input-company"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Message */}
-                    <div className="flex flex-col gap-1.5 mb-7">
-                      <Label
-                        htmlFor="cu-message"
-                        className="text-sm font-medium"
-                        style={{ color: "#374151" }}
-                      >
-                        Your Message <span style={{ color: "#4f8ef7" }}>*</span>
-                      </Label>
-                      <Textarea
-                        id="cu-message"
-                        rows={5}
-                        placeholder="Tell us about your project goals, timeline, and any specific AI requirements…"
-                        value={form.message}
-                        onChange={(e) =>
-                          handleChange("message", e.target.value)
-                        }
-                        className="form-field-glow resize-none border-[rgba(0,0,0,0.12)] bg-white text-[#1a1a2e] placeholder:text-[#9ca3af] focus-visible:ring-[#4f8ef7]"
-                        aria-invalid={!!errors.message}
-                        data-ocid="contact-textarea-message"
-                      />
-                      {errors.message && (
-                        <p
-                          className="text-xs text-red-500"
-                          data-ocid="contact.message.field_error"
-                        >
-                          {errors.message}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Submit */}
-                    <Button
-                      type="submit"
-                      disabled={submitting}
-                      className="w-full gap-2 h-13 py-4 text-base font-semibold text-white transition-smooth hover:opacity-90 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
-                      style={{
-                        background: "linear-gradient(135deg, #4f8ef7, #7c5cbf)",
-                        border: "none",
-                        boxShadow: "0 4px 20px rgba(79,142,247,0.3)",
-                      }}
-                      data-ocid="contact.submit_button"
-                    >
-                      {submitting ? (
-                        <>
-                          <svg
-                            className="h-5 w-5 animate-spin"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            />
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                            />
-                          </svg>
-                          Sending…
-                        </>
-                      ) : (
-                        <>
-                          <Send size={17} />
-                          Send Message
-                        </>
-                      )}
-                    </Button>
-                    <p
-                      className="mt-4 text-center text-xs"
-                      style={{ color: "#9ca3af" }}
-                    >
-                      We typically respond within 24 hours. No spam, ever.
-                    </p>
-                  </form>
-                )}
-              </motion.div>
             </div>
           </div>
         </section>

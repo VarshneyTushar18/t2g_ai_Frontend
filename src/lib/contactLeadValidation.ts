@@ -5,6 +5,7 @@ export type ContactLeadFields = {
   email: string;
   country: string;
   phone: string;
+  company: string;
   message: string;
 };
 
@@ -18,18 +19,22 @@ export function validateContactLead(
   else if (!EMAIL_RE.test(form.email.trim()))
     errors.email = "Please enter a valid email address.";
   if (!form.country.trim()) errors.country = "Please select your country.";
+  if (!form.company.trim()) errors.company = "Company name is required.";
   if (!form.message.trim()) errors.message = "Message is required.";
+
   const ph = form.phone.trim();
-  if (ph) {
+  if (!ph) {
+    errors.phone = "Phone number is required.";
+  } else {
     const dialDigits = (dialCodes[form.country] || "").replace(/\D/g, "");
     const allDigits = ph.replace(/\D/g, "");
     const national =
       dialDigits && allDigits.startsWith(dialDigits)
         ? allDigits.slice(dialDigits.length)
         : allDigits;
-    if (national.length > 0 && national.length < 8)
-      errors.phone = "Enter a complete phone number.";
-    if (allDigits.length > 15) errors.phone = "Phone number is too long.";
+    if (national.length < 8)
+      errors.phone = "Enter a complete phone number (at least 8 digits).";
+    else if (allDigits.length > 15) errors.phone = "Phone number is too long.";
   }
   return errors;
 }

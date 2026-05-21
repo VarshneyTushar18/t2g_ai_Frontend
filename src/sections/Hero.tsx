@@ -200,21 +200,44 @@ export default function Hero() {
           </button>
 
           <button
-            type="button"
-            onClick={() => scrollTo("process")}
-            className="relative overflow-hidden font-orbitron text-xs sm:text-sm font-bold tracking-wider 
-  px-6 sm:px-8 py-2.5 rounded-xl w-full sm:w-auto 
-  border border-cyan-400/30 
-  bg-transparent 
-  text-cyan-400 
-  transition-all duration-300 ease-out
-  hover:bg-[#00c49a]/10 hover:text-black hover:border-cyan-300
-  hover:shadow-[0_0_15px_rgba(0,196,154,0.5)]
-  hover:-translate-y-1
-  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00c49a]"
-          >
-            See How It Works
-          </button>
+  type="button"
+  onClick={() => scrollTo("process")}
+  className="
+    relative overflow-hidden
+    font-orbitron
+    text-xs sm:text-sm
+    font-bold
+    tracking-widest
+
+    px-6 sm:px-8
+    py-3
+    rounded-xl
+    w-full sm:w-auto
+
+    bg-[#00c49a]
+    text-black
+
+    border border-[#00e0b0]
+
+    shadow-[0_0_18px_rgba(0,196,154,0.45)]
+
+    transition-all duration-300 ease-out
+
+    hover:bg-cyan-300
+    hover:text-black
+    hover:shadow-[0_0_35px_rgba(34,211,238,0.85)]
+    hover:scale-105
+    hover:-translate-y-1
+
+    active:scale-100
+
+    focus:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-cyan-300
+  "
+>
+  See How It Works
+</button>
         </motion.div>
 
         {/* Trust row */}

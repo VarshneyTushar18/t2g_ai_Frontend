@@ -1,6 +1,10 @@
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  HIRE_AI_DEVELOPERS_HREF,
+  HIRE_DEVELOPER_NAV_ITEMS,
+} from "@/data/hireDeveloperNav";
 
 type NavItem = {
   label: string;
@@ -11,20 +15,21 @@ type NavItem = {
 const NAV_LINKS: NavItem[] = [
   {
     label: "Hire AI Developers",
-    href: "/hire-ai-developer",
-    children: [
-      { label: "Hire AI Lovable Developer", href: "/hire-lovable" },
-      { label: "Hire AI Emergent Developer", href: "/hire-emergent-ai" },
-      { label: "Hire OpenAI Developer", href: "/hire-openai" },
-      { label: "Hire Caffeine Developer", href: "/hire-caffeine-developer" },
-      { label: "Hire Genw.AI Developer", href: "/hire-genwai-developer" },
-    ],
+    href: HIRE_AI_DEVELOPERS_HREF,
+    children: [...HIRE_DEVELOPER_NAV_ITEMS],
   },
   { label: "Industries", href: "/industries" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "About Us", href: "/about" },
   { label: "Let's Talk with AI Expert", href: "/ai-expert" },
 ];
+
+const AI_EXPERT_HREF = "/ai-expert";
+
+function navLinkClass(href?: string) {
+  if (href === AI_EXPERT_HREF) return "nav-ai-expert-cta";
+  return "text-sm font-semibold text-gray-600 hover:text-green-600 transition-colors duration-200";
+}
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
@@ -144,8 +149,9 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <button
+                    type="button"
                     onClick={() => handleNavClick(item)}
-                    className="text-sm font-semibold text-gray-600 hover:text-green-600 transition"
+                    className={navLinkClass(item.href)}
                   >
                     {item.label}
                   </button>
@@ -208,8 +214,13 @@ export default function Navbar() {
                 </div>
               ) : (
                 <button
+                  type="button"
                   onClick={() => handleNavClick(item)}
-                  className="text-left text-sm font-medium text-gray-700"
+                  className={
+                    item.href === AI_EXPERT_HREF
+                      ? "nav-ai-expert-cta text-left"
+                      : "text-left text-sm font-medium text-gray-700 hover:text-green-600 transition-colors"
+                  }
                 >
                   {item.label}
                 </button>
