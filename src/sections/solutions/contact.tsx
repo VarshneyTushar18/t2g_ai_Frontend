@@ -1142,12 +1142,7 @@ export default function ContactUsPage() {
                           style={{ color: "#374151" }}
                         >
                           AI Product{" "}
-                          <span
-                            className="text-xs"
-                            style={{ color: "#9ca3af" }}
-                          >
-                            (optional)
-                          </span>
+                          <span style={{ color: "#4f8ef7" }}>*</span>
                         </Label>
                         <Select
                           value={form.aiProduct}

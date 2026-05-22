@@ -733,9 +733,7 @@ export default function Contact() {
                     style={{ color: "#374151" }}
                   >
                     AI Product{" "}
-                    <span className="text-xs" style={{ color: "#9ca3af" }}>
-                      (optional)
-                    </span>
+                    <span style={{ color: "#4f8ef7" }}>*</span>
                   </Label>
                   <Select
                     value={form.aiProduct}
@@ -774,9 +772,7 @@ export default function Contact() {
                     style={{ color: "#374151" }}
                   >
                     Phone{" "}
-                    <span className="text-xs" style={{ color: "#9ca3af" }}>
-                      (optional)
-                    </span>
+                    <span style={{ color: "#4f8ef7" }}>*</span>
                   </Label>
                   <Input
                     id="cu-phone"
@@ -810,6 +806,8 @@ export default function Contact() {
                     style={{ color: "#374151" }}
                   >
                     Company Name
+                    <span style={{ color: "#4f8ef7" }}>*</span>
+
                   </Label>
                   <Input
                     id="cu-company"
