@@ -502,7 +502,7 @@ export default function OurTeamPage() {
                 Get in Touch
               </Button>
             </Link>
-            <Link to="/about-us" data-ocid="team.cta.about.button">
+            <Link to="/about/us" data-ocid="team.cta.about.button">
               <Button
                 size="lg"
                 variant="outline"

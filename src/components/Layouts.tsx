@@ -146,7 +146,7 @@ const FOOTER_SOLUTIONS = [
 const FOOTER_COMPANY = ["About Us", "Our Team", "Portfolio", "Blog", "Careers"];
 
 const FOOTER_COMPANY_LINKS: Record<string, string> = {
-  "About Us": "/about-us",
+  "About Us": "/about/us",
   "Our Team": "/our-team",
   Portfolio: "/portfolio",
   Blog: "/blog",
@@ -244,7 +244,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               Industries
             </button>
 
-            <button onClick={() => navigate("/about-us")}>
+            <button onClick={() => navigate("/about/us")}> 
               About
             </button>
 
@@ -275,7 +275,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               Industries
             </button>
 
-            <button onClick={() => navigate("/about-us")}>
+            <button onClick={() => navigate("/about/us")}>
               About
             </button>
 

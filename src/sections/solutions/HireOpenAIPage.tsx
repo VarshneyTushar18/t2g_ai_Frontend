@@ -791,7 +791,7 @@ export function HireOpenAIPage() {
               <Button
                 variant="outline"
                 className="btn-secondary px-8 py-3 text-base h-auto"
-                onClick={() => navigate("/hire-us")}
+                onClick={() => navigate("/hire/us")}
                 data-ocid="openai-hero.secondary_button"
               >
                 View Our Services
@@ -1507,7 +1507,7 @@ export function HireOpenAIPage() {
                   border: "1px solid rgba(167,139,250,0.5)",
                   color: "#a78bfa",
                 }}
-                onClick={() => navigate("/hire-us")}
+                onClick={() => navigate("/hire/us")}
                 data-ocid="openai-cta.secondary_button"
               >
                 Let's Talk with an AI Expert

@@ -2,22 +2,22 @@
 export const HIRE_DEVELOPER_NAV = [
   {
     label: "Hire AI Lovable Developer",
-    href: "/hire-lovable",
+    href: "/hire/lovable/developer",
     platformName: "Lovable",
   },
   {
     label: "Hire AI Emergent Developer",
-    href: "/hire-emergent-ai",
+    href: "/hire/emergent/developer",
     platformName: "Emergent",
   },
   {
     label: "Hire OpenAI Developer",
-    href: "/hire-openai",
+    href: "/hire/openai/developer",
     platformName: "OpenCode AI",
   },
   {
     label: "Hire Caffeine Developer",
-    href: "/hire-caffeine-developer",
+    href: "/hire/caffeine/developer",
     platformName: "Caffeine",
   },
 ] as const;

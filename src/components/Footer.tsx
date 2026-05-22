@@ -22,20 +22,20 @@ const FOOTER_SOLUTIONS = [
 const FOOTER_COMPANY = ["About Us", "Our Team", "Portfolio", "Blog", "Careers"];
 
 const FOOTER_SERVICE_LINKS: Record<string, string> = {
-  "Hire AI Lovable Developer": "/hire-lovable",
-  "Hire AI Emergent Developer": "/hire-emergent-ai",
-  "Hire OpenAI Developer": "/hire-openai",
-  "Hire Caffeine Developer": "/hire-caffeine-developer",
+  "Hire AI Lovable Developer": "/hire/lovable/developer",
+  "Hire AI Emergent Developer": "/hire/emergent/developer",
+  "Hire OpenAI Developer": "/hire/openai/developer",
+  "Hire Caffeine Developer": "/hire/caffeine/developer",
   "Hire Genw.AI Developer": "/hire-ai-developer",
 };
 
 const FOOTER_SOLUTION_LINKS: Record<string, string> = {
   "Hire AI Developer": "/hire-ai-developer",
-  "Hire Us": "/hire-us",
+  "Hire Us": "/hire/us",
 };
 
 const FOOTER_COMPANY_LINKS: Record<string, string> = {
-  "About Us": "/about",
+  "About Us": "/about/us",
   "Our Team": "/our-team",
   Portfolio: "/portfolio",
   Blog: "/blog",

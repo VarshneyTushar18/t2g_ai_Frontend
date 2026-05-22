@@ -20,7 +20,7 @@ const NAV_LINKS: NavItem[] = [
   },
   { label: "Industries", href: "/industries" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/about/us" },
   { label: "Let's Talk with AI Expert", href: "/ai-expert" },
 ];
 
@@ -163,7 +163,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex">
             <button
-              onClick={() => navigate("/hire-us")}
+              onClick={() => navigate("/hire/us")}
               className="bg-purple-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-purple-700 transition"
             >
               Hire Us
@@ -231,7 +231,7 @@ export default function Navbar() {
           <button
             onClick={() => {
               setMobileOpen(false);
-              navigate("/hire-us");
+              navigate("/hire/us");
             }}
             className="bg-purple-600 text-white py-2 rounded-lg text-sm font-bold hover:bg-purple-700 transition"
           >
