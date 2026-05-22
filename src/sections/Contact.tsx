@@ -1,3 +1,8 @@
+import {
+  isTurnstileEnabled,
+  TurnstileField,
+  type TurnstileFieldRef,
+} from "@/components/TurnstileField";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -458,6 +463,8 @@ export default function Contact() {
   const [errors, setErrors] = useState<
     Partial<Record<keyof FormData, string>>
   >({});
+  const [captchaError, setCaptchaError] = useState<string | undefined>();
+  const turnstileRef = useRef<TurnstileFieldRef>(null);
 
   const selectedDialCode = COUNTRY_DIAL_CODES[form.country] || "+91";
 
@@ -505,6 +512,13 @@ export default function Contact() {
       return;
     }
 
+    const captchaToken = turnstileRef.current?.getToken() ?? undefined;
+    if (isTurnstileEnabled() && !captchaToken) {
+      setCaptchaError("Please complete the captcha verification.");
+      return;
+    }
+    setCaptchaError(undefined);
+
     setSubmitting(true);
 
     try {
@@ -514,15 +528,21 @@ export default function Contact() {
         COUNTRY_DIAL_CODES,
       );
 
-      await submitContactForm({ ...form, phone: normalizedPhone });
+      await submitContactForm({
+        ...form,
+        phone: normalizedPhone,
+        ...(captchaToken ? { captchaToken } : {}),
+      });
 
       toast.success("Message sent successfully");
 
       setForm(initialForm);
       setErrors({});
+      turnstileRef.current?.reset();
       setSubmitted(true);
       navigate("/thank-you");
     } catch (err: any) {
+      turnstileRef.current?.reset();
       console.error(err);
       toast.error(err?.message || "Failed to send message");
     } finally {
@@ -849,6 +869,19 @@ export default function Contact() {
                   </p>
                 )}
               </div>
+
+              <TurnstileField
+                ref={turnstileRef}
+                onTokenChange={() => setCaptchaError(undefined)}
+              />
+              {captchaError && (
+                <p
+                  className="text-xs text-red-500 -mt-5 mb-3"
+                  data-ocid="contact.captcha.field_error"
+                >
+                  {captchaError}
+                </p>
+              )}
 
               {/* Submit */}
               <Button

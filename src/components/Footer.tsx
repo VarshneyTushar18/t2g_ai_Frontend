@@ -12,7 +12,6 @@ const FOOTER_SERVICES = [
   "Hire AI Emergent Developer",
   "Hire OpenAI Developer",
   "Hire Caffeine Developer",
-  "Hire Genw.AI Developer",
 ];
 
 const FOOTER_SOLUTIONS = [

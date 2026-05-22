@@ -587,3 +587,14 @@ main h1 {
   }
 }
 
+/* Cloudflare Turnstile — align with contact form (light, full width) */
+.turnstile-field {
+  width: 100%;
+}
+
+.turnstile-field > div,
+.turnstile-field iframe {
+  width: 100% !important;
+  max-width: 100%;
+}
+
