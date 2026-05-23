@@ -25,7 +25,7 @@ const FOOTER_SERVICE_LINKS: Record<string, string> = {
   "Hire AI Lovable Developer": "/hire/lovable/developer",
   "Hire AI Emergent Developer": "/hire/emergent/developer",
   "Hire OpenAI Developer": "/hire/openai/developer",
-  "Hire Caffeine Developer": "/hire/caffeine/developer",
+  "Hire Caffeine Developer": "/hire-caffeine-developer",
   "Hire Genw.AI Developer": "/hire-ai-developer",
 };
 

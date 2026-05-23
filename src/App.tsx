@@ -116,7 +116,7 @@ export default function App() {
           <Route path="/about/us" element={<AboutUsPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/our-team" element={<OurTeamPage />} />
-          <Route path="/hire/caffeine/developer" element={<HireCaffeineDeveloperPage />} />
+          <Route path="/hire-caffeine-developer" element={<HireCaffeineDeveloperPage />} />
           <Route path="/hire/lovable/developer" element={<HireLovablePage />} />
           <Route path="/hire/openai/developer" element={<HireOpenAIPage />} />
           <Route path="/hire/emergent/developer" element={<HireEmergentAIPage />} />

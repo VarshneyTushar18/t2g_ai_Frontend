@@ -17,7 +17,7 @@ export const HIRE_DEVELOPER_NAV = [
   },
   {
     label: "Hire Caffeine Developer",
-    href: "/hire/caffeine/developer",
+    href: "/hire-caffeine-developer",
     platformName: "Caffeine",
   },
 ] as const;
