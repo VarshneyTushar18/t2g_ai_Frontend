@@ -1,6 +1,7 @@
 import "./index.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import PageSeo from "./components/PageSeo";
 import { ArrowUp } from "lucide-react";
 
 import { useEffect, useState } from "react";
@@ -95,6 +96,7 @@ export default function App() {
       style={{ backgroundColor: "#f8faff" }}
     >
       <ScrollToTop />
+      <PageSeo />
       <Navbar />
 
       <main>

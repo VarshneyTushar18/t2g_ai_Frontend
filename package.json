@@ -10,7 +10,8 @@
     "copy:env": "node ./scripts/copy-env.cjs",
     "typecheck": "tsc --noEmit",
     "check": "biome check src",
-    "fix": "biome check --write src"
+    "fix": "biome check --write src",
+    "sitemap": "node scripts/generate-sitemap.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.0",
