@@ -2,6 +2,7 @@ import { fileURLToPath, URL } from "url";
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 import environment from "vite-plugin-environment";
+import { vitePluginSeoHtml } from "./scripts/vite-plugin-seo-html.mjs";
 
 const ii_url =
   process.env.DFX_NETWORK === "local"
@@ -62,6 +63,7 @@ export default defineConfig(({ mode }) => {
       environment(["II_URL"]),
       environment(["STORAGE_GATEWAY_URL"]),
       react(),
+      vitePluginSeoHtml(),
     ],
     resolve: {
       alias: [

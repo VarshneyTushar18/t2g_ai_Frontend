@@ -1,0 +1,2 @@
+# SPA fallback for unknown routes only (Netlify serves prerendered */index.html first).
+/*    /index.html   200

@@ -1,0 +1,9 @@
+[build]
+  publish = "dist"
+
+# Do not force SPA rewrite when a prerendered file exists (e.g. /portfolio/index.html).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false

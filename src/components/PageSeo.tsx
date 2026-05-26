@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import {
   DEFAULT_PAGE_SEO,
   getPageSeo,
+  getSolutionPageSeo,
   getSolutionSlugFromPath,
 } from "../data/pageSeo";
 import { applyPageSeo } from "../lib/applyPageSeo";
-import { buildSolutionPageSeo } from "../lib/solutionPageSeo";
 
 /** Updates document title and meta tags when the route changes. */
 export default function PageSeo() {
@@ -14,29 +14,11 @@ export default function PageSeo() {
 
   useEffect(() => {
     const slug = getSolutionSlugFromPath(pathname);
-
-    if (!slug) {
-      applyPageSeo(getPageSeo(pathname));
+    if (slug) {
+      applyPageSeo(getSolutionPageSeo(slug) ?? DEFAULT_PAGE_SEO);
       return;
     }
-
-    let cancelled = false;
-
-    import("../data/solutions")
-      .then(({ getSolutionData }) => {
-        if (cancelled) return;
-        const solution = getSolutionData(slug);
-        applyPageSeo(
-          solution ? buildSolutionPageSeo(solution) : DEFAULT_PAGE_SEO,
-        );
-      })
-      .catch(() => {
-        if (!cancelled) applyPageSeo(DEFAULT_PAGE_SEO);
-      });
-
-    return () => {
-      cancelled = true;
-    };
+    applyPageSeo(getPageSeo(pathname));
   }, [pathname]);
 
   return null;
