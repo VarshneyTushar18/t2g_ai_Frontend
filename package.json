@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "build": "vite build && node ./scripts/prerender-html.mjs && node ./scripts/copy-env.cjs",
+    "build": "node ./scripts/build.mjs",
+    "build:vite": "vite build",
     "prerender": "node ./scripts/prerender-html.mjs",
-    "postbuild": "node ./scripts/verify-dist-api-url.mjs",
+    "verify:seo": "node ./scripts/verify-prerender-seo.mjs",
     "copy:env": "node ./scripts/copy-env.cjs",
     "typecheck": "tsc --noEmit",
     "check": "biome check src",

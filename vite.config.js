@@ -31,7 +31,8 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    logLevel: "error",
+    // "info" shows transform progress during build (was "error", which hid almost all output)
+    logLevel: process.env.VITE_LOG_LEVEL ?? "info",
     build: {
       emptyOutDir: true,
       sourcemap: false,
