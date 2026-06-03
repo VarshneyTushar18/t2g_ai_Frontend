@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
+    "start": "node ./scripts/serve-production.mjs",
     "build": "node ./scripts/build.mjs",
     "build:vite": "vite build",
     "prerender": "node ./scripts/prerender-html.mjs",
