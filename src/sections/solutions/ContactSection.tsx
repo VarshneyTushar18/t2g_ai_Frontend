@@ -29,7 +29,6 @@ const AI_PRODUCT_OPTIONS = [
   "Hire Emergent Developer",
   "Hire OpenAI Developer",
   "Hire Caffeine AI Developer",
-  "Hire GenW.ai Developer",
 ];
   
 interface EnquiryActor {

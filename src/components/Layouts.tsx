@@ -124,7 +124,6 @@ const HIRE_SUBMENU = [
   "Hire AI Emergent Developer",
   "Hire Open AI Developer",
   "Hire Caffeini AI Developer",
-  "Hire Genw.AI Developer",
 ];
 
 const FOOTER_SERVICES = [

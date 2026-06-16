@@ -1,12 +1,12 @@
 {
   "default": {
     "title": "Tech2Globe AI Engineering | Hire an AI Engineer",
-    "description": "Hire expert AI Engineers specializing in Lovable, Emergent, Caffeine, GenW.AI, Horizon, Framer AI & OpenCode AI. We turn your vision into a fully functional app, website, or software at record-breaking speed."
+    "description": "Hire expert AI Engineers specializing in Lovable, Emergent, Caffeine & OpenAI. We turn your vision into a fully functional app, website, or software at record-breaking speed."
   },
   "routes": {
     "/": {
       "title": "Tech2Globe AI Engineering | Hire an AI Engineer",
-      "description": "Hire expert AI Engineers specializing in Lovable, Emergent, Caffeine, GenW.AI, Horizon, Framer AI & OpenCode AI. We turn your vision into a fully functional app, website, or software at record-breaking speed."
+      "description": "Hire expert AI Engineers specializing in Lovable, Emergent, Caffeine & OpenAI. We turn your vision into a fully functional app, website, or software at record-breaking speed."
     },
     "/hire/emergent/developer": {
       "title": "Hire AI Developers for Custom AI Solutions & Automation",

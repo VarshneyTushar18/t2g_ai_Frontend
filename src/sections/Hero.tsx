@@ -167,8 +167,7 @@ export default function Hero() {
         >
           Hire Expert AI Engineers specializing in{" "}
           <span style={{ color: "#007a64", fontWeight: 600 }}>
-            Lovable, Emergent, Caffeine, GenW.AI, Horizon, Framer AI &amp;
-            OpenCode AI
+            Lovable, Emergent, Caffeine &amp; OpenAI
           </span>{" "}
           — we turn your vision into a fully functional app, website, or
           software at record-breaking speed.

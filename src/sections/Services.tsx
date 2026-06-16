@@ -14,13 +14,13 @@ const services: Service[] = [
     number: "01",
     title: "AI-Powered Web Development",
     description:
-      "Stunning, functional websites built using Lovable, Framer AI & Horizon in hours — not weeks. Powered AI infrastructure, production-ready output.",
+      "Stunning, functional websites built using Lovable in hours — not weeks. Powered AI infrastructure, production-ready output.",
   },
   {
     number: "02",
     title: "App Development via AI Engineering",
     description:
-      "iOS, Android, and PWA apps built through Emergent and OpenCode AI with clean, production-grade code and AI prompt engineering.",
+      "iOS, Android, and PWA apps built through Emergent and OpenAI with clean, production-grade code and AI prompt engineering.",
   },
   {
     number: "03",
@@ -32,7 +32,7 @@ const services: Service[] = [
     number: "04",
     title: "SaaS & Software MVP Development",
     description:
-      "Launch your startup idea as a working MVP using Caffeine and GenW.AI — demo-ready, pitch-ready, or ship-ready.",
+      "Launch your startup idea as a working MVP using Caffeine — demo-ready, pitch-ready, or ship-ready.",
   },
   {
     number: "05",
@@ -44,7 +44,7 @@ const services: Service[] = [
     number: "06",
     title: "Figma to Live App (AI-Powered)",
     description:
-      "Upload your Figma design — we use Framer AI to deliver a pixel-perfect, fully functional live application.",
+      "Upload your Figma design — we deliver a pixel-perfect, fully functional live application.",
   },
 ];
 

@@ -13,7 +13,7 @@ export const HIRE_DEVELOPER_NAV = [
   {
     label: "Hire OpenAI Developer",
     href: "/hire/openai/developer",
-    platformName: "OpenCode AI",
+    platformName: "OpenAI",
   },
   {
     label: "Hire Caffeine Developer",

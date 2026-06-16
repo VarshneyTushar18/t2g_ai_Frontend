@@ -77,13 +77,13 @@ const platforms: Platform[] = [
   // },
   {
     tag: "Open Source AI Coding",
-    name: "OpenCode AI",
+    name: "OpenAI",
     description:
       "AI coding automation for scalable software delivery with open-source precision and speed.",
     gradient: "linear-gradient(90deg, #00c49a, #7c3aed)",
     tagColor: "#007a64",
     icon: "/assets/images/opencode-logo.png",
-    href: platformHref("OpenCode AI"),
+    href: platformHref("OpenAI"),
   },
 ];
 

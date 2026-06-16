@@ -38,12 +38,6 @@ const AI_PRODUCTS = [
     icon: Code2,
     color: "#7c5cbf",
   },
-  {
-    label: "Hire GenW.ai Developer",
-    href: "/solutions/hire-genw-ai-developer",
-    icon: Bot,
-    color: "#ec4899",
-  },
 ];
 
 function ConsultationBox() {

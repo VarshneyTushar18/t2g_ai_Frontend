@@ -772,8 +772,8 @@ export function HireUsPage() {
                 style={{ background: ACCENT }}
                 data-ocid="hero.primary_button"
               >
-                <Link to="/hire-ai-developer">
-                  Hire an AI Developer
+                <Link to="/ai-expert">
+                  Get Free Consultation
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </Link>
               </Button>
