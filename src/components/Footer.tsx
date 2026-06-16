@@ -98,27 +98,27 @@ export default function Footer() {
                 {[
                   {
                     icon: Linkedin,
-                    link: "https://linkedin.com",
+                    link: "https://www.linkedin.com/company/tech2globe",
                     color: "hover:text-blue-500",
                   },
                   {
                     icon: Twitter,
-                    link: "https://twitter.com",
+                    link: "https://twitter.com/Tech2Globe",
                     color: "hover:text-sky-400",
                   },
                   {
                     icon: Facebook,
-                    link: "https://facebook.com",
+                    link: "https://www.facebook.com/tech2globe.software",
                     color: "hover:text-blue-600",
                   },
                   {
                     icon: Instagram,
-                    link: "https://instagram.com",
+                    link: "https://www.instagram.com/tech2globeweb/",
                     color: "hover:text-pink-500",
                   },
                   {
                     icon: Youtube,
-                    link: "https://youtube.com",
+                    link: "https://www.youtube.com/user/Tech2Globe",
                     color: "hover:text-red-500",
                   },
                 ].map(({ icon: Icon, link, color }, i) => (
