@@ -18,7 +18,7 @@ const STATIC_ROUTES = [
   { path: "/hire/openai/developer", priority: "0.9", changefreq: "weekly" },
   { path: "/hire/emergent/developer", priority: "0.9", changefreq: "weekly" },
   { path: "/hire-caffeine-developer", priority: "0.9", changefreq: "weekly" },
-  { path: "/hire/us", priority: "0.9", changefreq: "weekly" },
+  { path: "/hire-us", priority: "0.9", changefreq: "weekly" },
   { path: "/industries", priority: "0.8", changefreq: "monthly" },
   { path: "/portfolio", priority: "0.8", changefreq: "monthly" },
   { path: "/about/us", priority: "0.8", changefreq: "monthly" },

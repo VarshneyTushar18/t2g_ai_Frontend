@@ -1170,7 +1170,7 @@ export default function HireAIDevelopersPage() {
                 <Button
                   variant="outline"
                   className="px-8 py-3 text-base h-auto"
-                  onClick={() => navigate("/hire/us")}
+                  onClick={() => navigate("/hire-us")}
                   data-ocid="hero.secondary_button"
                 >
                   View Our Services
@@ -3099,7 +3099,7 @@ export default function HireAIDevelopersPage() {
                 <Button
                   className="font-semibold text-white rounded-md transition-smooth active:scale-95"
                   style={{ background: ACCENT }}
-                  onClick={scrollToContact}
+                   onClick={() => navigate("/ai-expert")}
                   data-ocid="agents.process.cta_button"
                 >
                   Start Your Project <ChevronRight className="w-4 h-4 ml-1" />
@@ -4243,7 +4243,7 @@ export default function HireAIDevelopersPage() {
               <Button
                 className="px-8 py-3 text-base h-auto font-semibold rounded-md transition-smooth active:scale-95 cursor-pointer"
                 style={{ background: "#ffffff", color: "#0d0d2b" }}
-                onClick={scrollToContact}
+               onClick={() => navigate("/ai-expert")}
                 data-ocid="cta.primary_button"
               >
                 Get a Free Consultation{" "}
@@ -4257,7 +4257,7 @@ export default function HireAIDevelopersPage() {
                   border: "1px solid rgba(167,139,250,0.5)",
                   color: "#a78bfa",
                 }}
-                onClick={scrollToContact}
+                onClick={() => navigate("/ai-expert")}
                 data-ocid="cta.secondary_button"
               >
                 Let's Talk with an AI Expert

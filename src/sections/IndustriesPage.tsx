@@ -1222,10 +1222,7 @@ export default function IndustriesPage() {
               <Button
                 size="lg"
                 className="bg-white text-indigo-700 hover:bg-gray-100 transition-smooth font-display font-bold px-8 text-base rounded-full border-0"
-                onClick={() => {
-                  const el = document.getElementById("contact");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
+          onClick={() => navigate("/ai-expert")}
                 data-ocid="cta.start_project.button"
               >
                 Start a Project
@@ -1234,7 +1231,7 @@ export default function IndustriesPage() {
                 size="lg"
                 variant="outline"
                 className="border-white/40 text-white hover:bg-white/10 transition-smooth font-display font-semibold px-8 text-base rounded-full bg-transparent"
-                onClick={() => navigate({ to: "/contact" })}
+              onClick={() => navigate("/ai-expert")}
                 data-ocid="cta.schedule_call.button"
               >
                 Schedule a Call

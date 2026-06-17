@@ -24,6 +24,7 @@ import {
 import { motion } from "motion/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const ACCENT = "#7c3aed";
@@ -282,7 +283,11 @@ function StatCard({
   value,
   label,
   index,
-}: { value: string; label: string; index: number }) {
+}: {
+  value: string;
+  label: string;
+  index: number;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -676,6 +681,8 @@ function ContactForm() {
 // ── Main Page ──────────────────────────────────────────────────────────────
 
 export function HireUsPage() {
+  const navigate = useNavigate();
+
   const scrollToContact = () => {
     const el = document.querySelector("#contact-form");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -952,7 +959,7 @@ export function HireUsPage() {
               <Button
                 className="font-semibold text-white rounded-md transition-smooth active:scale-95"
                 style={{ background: ACCENT }}
-                onClick={scrollToContact}
+                onClick={() => navigate("/ai-expert")}
                 data-ocid="process.cta_button"
               >
                 Start Your Hire
@@ -1183,7 +1190,8 @@ export function HireUsPage() {
               <Button
                 className="px-8 py-3 text-base h-auto font-semibold rounded-md transition-smooth active:scale-95 cursor-pointer"
                 style={{ background: "#ffffff", color: "#0d0d2b" }}
-                onClick={scrollToContact}
+                onClick={() => navigate("/ai-expert")}
+
                 data-ocid="cta.primary_button"
               >
                 Get a Free Consultation
@@ -1233,7 +1241,6 @@ export function HireUsPage() {
       </section>
 
       {/* ── Contact Form ─────────────────────────────────── */}
-
     </div>
   );
 }

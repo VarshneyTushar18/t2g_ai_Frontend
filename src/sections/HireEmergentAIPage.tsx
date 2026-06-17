@@ -822,7 +822,7 @@ export function HireEmergentAIPage() {
               <Button
                 variant="outline"
                 className="btn-secondary px-8 py-3 text-base h-auto"
-                onClick={() => navigate("/hire/us")}
+                onClick={() => navigate("/hire-us")}
                 data-ocid="hero.secondary_button"
               >
                 View Our Services

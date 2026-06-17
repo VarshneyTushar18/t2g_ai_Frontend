@@ -30,7 +30,7 @@ const FOOTER_SERVICE_LINKS: Record<string, string> = {
 
 const FOOTER_SOLUTION_LINKS: Record<string, string> = {
   "Hire AI Developer": "/hire-ai-developer",
-  "Hire Us": "/hire/us",
+  "Hire Us": "/hire-us",
 };
 
 const FOOTER_COMPANY_LINKS: Record<string, string> = {

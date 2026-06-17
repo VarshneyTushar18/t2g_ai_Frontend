@@ -122,7 +122,7 @@ export default function App() {
           <Route path="/hire/lovable/developer" element={<HireLovablePage />} />
           <Route path="/hire/openai/developer" element={<HireOpenAIPage />} />
           <Route path="/hire/emergent/developer" element={<HireEmergentAIPage />} />
-          <Route path="/hire/us" element={<HireUsPage />} />
+          <Route path="/hire-us" element={<HireUsPage />} />
           <Route path="/hire-ai-developer" element={<HireAIDevelopersPage />} />
         </Routes>
       </main>
