@@ -40,6 +40,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
+import { HIRE_AI_PRODUCT_OPTIONS } from "@/data/aiProductOptions";
 
 export const Route = createFileRoute("/contact")({
   component: ContactUsPage,
@@ -67,12 +68,7 @@ const EMPTY_FORM: ContactFormData = {
   message: "",
 };
 
-const AI_PRODUCT_OPTIONS = [
-  "Hire Lovable Developer",
-  "Hire Emergent Developer",
-  "Hire OpenAI Developer",
-  "Hire Caffeine AI Developer",
-];
+const AI_PRODUCT_OPTIONS = [...HIRE_AI_PRODUCT_OPTIONS];
 
 const COUNTRIES = [
   "Afghanistan",

@@ -24,6 +24,7 @@ import {
   validateContactLead,
 } from "@/lib/contactLeadValidation";
 import { toast } from "sonner";
+import { HIRE_AI_PRODUCT_OPTIONS } from "@/data/aiProductOptions";
 
 interface FormData {
   name: string;
@@ -45,12 +46,7 @@ const initialForm: FormData = {
   message: "",
 };
 
-const AI_PRODUCT_OPTIONS = [
-  "Hire Lovable Developer",
-  "Hire Emergent Developer",
-  "Hire OpenAI Developer",
-  "Hire Caffeine AI Developer",
-];
+const AI_PRODUCT_OPTIONS = [...HIRE_AI_PRODUCT_OPTIONS];
 
 const COUNTRIES = [
   "Afghanistan",

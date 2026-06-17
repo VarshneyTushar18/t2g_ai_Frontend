@@ -14,6 +14,7 @@ import { useActor } from "@caffeineai/core-infrastructure";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { HIRE_AI_PRODUCT_OPTIONS } from "@/data/aiProductOptions";
 
 interface EnquiryInput {
   name: string;
@@ -24,12 +25,7 @@ interface EnquiryInput {
   message: string;
 }
 
-const AI_PRODUCT_OPTIONS = [
-  "Hire Lovable Developer",
-  "Hire Emergent Developer",
-  "Hire OpenAI Developer",
-  "Hire Caffeine AI Developer",
-];
+const AI_PRODUCT_OPTIONS = [...HIRE_AI_PRODUCT_OPTIONS];
   
 interface EnquiryActor {
   submitEnquiry?: (input: EnquiryInput) => Promise<bigint>;
