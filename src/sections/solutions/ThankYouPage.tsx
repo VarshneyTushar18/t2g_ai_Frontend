@@ -25,7 +25,7 @@ export default function ThankYouPage() {
             <p className="text-base font-medium leading-7">
               If you do not hear from us within 1 business day, please send an email to
             </p>
-            <p className="mt-4 text-xl font-semibold text-emerald-900">Info@tech2globe.com</p>
+            <p className="mt-4 text-xl font-semibold text-emerald-900">info@tech2globe.ai</p>
             <p className="mt-2 text-sm leading-6 text-emerald-800">
               We will attend you at the earliest.
             </p>
